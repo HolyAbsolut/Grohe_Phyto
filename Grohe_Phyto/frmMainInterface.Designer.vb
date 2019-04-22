@@ -109,8 +109,7 @@ Partial Class frmMainInterface
         Me.btnHSCodes = New System.Windows.Forms.Button()
         Me.btnGrohexls = New System.Windows.Forms.Button()
         Me.btnImportxls = New System.Windows.Forms.Button()
-        Me.txtSheetMaterial = New Grohe_Phyto.Watermark()
-        Me.txtSheetDelivery = New Grohe_Phyto.Watermark()
+        Me.txtMaterial = New Grohe_Phyto.Watermark()
         Me.tabSetting = New System.Windows.Forms.TabPage()
         Me.TotalDataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -647,7 +646,7 @@ Partial Class frmMainInterface
         Me.TotalDataGridView.Location = New System.Drawing.Point(6, 197)
         Me.TotalDataGridView.Name = "TotalDataGridView"
         Me.TotalDataGridView.ReadOnly = True
-        Me.TotalDataGridView.Size = New System.Drawing.Size(971, 25)
+        Me.TotalDataGridView.Size = New System.Drawing.Size(1105, 8)
         Me.TotalDataGridView.TabIndex = 44
         Me.TotalDataGridView.TabStop = False
         '
@@ -839,7 +838,7 @@ Partial Class frmMainInterface
         'btnShipmentsSave
         '
         Me.btnShipmentsSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnShipmentsSave.Location = New System.Drawing.Point(924, -118)
+        Me.btnShipmentsSave.Location = New System.Drawing.Point(1058, -135)
         Me.btnShipmentsSave.Name = "btnShipmentsSave"
         Me.btnShipmentsSave.Size = New System.Drawing.Size(50, 48)
         Me.btnShipmentsSave.TabIndex = 42
@@ -862,8 +861,7 @@ Partial Class frmMainInterface
         Me.tabImport.Controls.Add(Me.btnHSCodes)
         Me.tabImport.Controls.Add(Me.btnGrohexls)
         Me.tabImport.Controls.Add(Me.btnImportxls)
-        Me.tabImport.Controls.Add(Me.txtSheetMaterial)
-        Me.tabImport.Controls.Add(Me.txtSheetDelivery)
+        Me.tabImport.Controls.Add(Me.txtMaterial)
         Me.tabImport.Location = New System.Drawing.Point(4, 22)
         Me.tabImport.Name = "tabImport"
         Me.tabImport.Padding = New System.Windows.Forms.Padding(3)
@@ -985,25 +983,15 @@ Partial Class frmMainInterface
         Me.btnImportxls.TabIndex = 13
         Me.btnImportxls.UseVisualStyleBackColor = True
         '
-        'txtSheetMaterial
+        'txtMaterial
         '
-        Me.txtSheetMaterial.Location = New System.Drawing.Point(376, 129)
-        Me.txtSheetMaterial.Name = "txtSheetMaterial"
-        Me.txtSheetMaterial.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetMaterial.TabIndex = 19
-        Me.txtSheetMaterial.Text = "Tabelle2"
-        Me.txtSheetMaterial.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSheetMaterial.WatermarkText = "Material"
-        '
-        'txtSheetDelivery
-        '
-        Me.txtSheetDelivery.Location = New System.Drawing.Point(376, 103)
-        Me.txtSheetDelivery.Name = "txtSheetDelivery"
-        Me.txtSheetDelivery.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetDelivery.TabIndex = 18
-        Me.txtSheetDelivery.Text = "Tabelle3"
-        Me.txtSheetDelivery.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSheetDelivery.WatermarkText = "Delivery"
+        Me.txtMaterial.Location = New System.Drawing.Point(376, 103)
+        Me.txtMaterial.Name = "txtMaterial"
+        Me.txtMaterial.Size = New System.Drawing.Size(117, 20)
+        Me.txtMaterial.TabIndex = 18
+        Me.txtMaterial.Text = "Tabelle3"
+        Me.txtMaterial.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtMaterial.WatermarkText = "Material"
         '
         'tabSetting
         '
@@ -1450,8 +1438,7 @@ Partial Class frmMainInterface
     Friend WithEvents btnHSCodes As Button
     Friend WithEvents btnGrohexls As Button
     Friend WithEvents btnImportxls As Button
-    Friend WithEvents txtSheetMaterial As Watermark
-    Friend WithEvents txtSheetDelivery As Watermark
+    Friend WithEvents txtMaterial As Watermark
     Friend WithEvents tabSetting As TabPage
     Friend WithEvents btnSignaturePath As Button
     Friend WithEvents LinkLabel2 As LinkLabel
