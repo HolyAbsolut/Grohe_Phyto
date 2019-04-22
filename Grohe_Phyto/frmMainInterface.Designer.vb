@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMainInterface
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMainInterface
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim STT_NOLabel As System.Windows.Forms.Label
@@ -38,6 +38,7 @@ Partial Class frmMainInterface
         Dim ShipperLabel As System.Windows.Forms.Label
         Dim ConsigneeLabel As System.Windows.Forms.Label
         Dim WeightLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainInterface))
         Me.DsGrohe = New Grohe_Phyto.dsGrohe()
         Me.DsShipmentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsShipmentsTableAdapter = New Grohe_Phyto.dsGroheTableAdapters.dsShipmentsTableAdapter()
@@ -49,7 +50,6 @@ Partial Class frmMainInterface
         Me.DtMatCodeTableAdapter = New Grohe_Phyto.dsGroheTableAdapters.dtMatCodeTableAdapter()
         Me.tabControl = New System.Windows.Forms.TabControl()
         Me.tabOverview = New System.Windows.Forms.TabPage()
-        Me.txtSearch = New Grohe_Phyto.Watermark()
         Me.cmbFilter = New System.Windows.Forms.ComboBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.dgvMain = New System.Windows.Forms.DataGridView()
@@ -73,6 +73,11 @@ Partial Class frmMainInterface
         Me.tabShipment = New System.Windows.Forms.TabPage()
         Me.btnWispexMail = New System.Windows.Forms.Button()
         Me.TotalDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ContainerNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MaterialNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HSCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.STT_NOTextBox = New System.Windows.Forms.TextBox()
@@ -98,8 +103,6 @@ Partial Class frmMainInterface
         Me.tabImport = New System.Windows.Forms.TabPage()
         Me.ProgressBar = New System.Windows.Forms.ProgressBar()
         Me.chkDelete = New System.Windows.Forms.CheckBox()
-        Me.txtSheetHsCodes = New System.Windows.Forms.TextBox()
-        Me.txtSheetTango = New System.Windows.Forms.TextBox()
         Me.txtGroheInfo = New System.Windows.Forms.TextBox()
         Me.txtHSCodes = New System.Windows.Forms.TextBox()
         Me.txtTango = New System.Windows.Forms.TextBox()
@@ -109,56 +112,22 @@ Partial Class frmMainInterface
         Me.btnHSCodes = New System.Windows.Forms.Button()
         Me.btnGrohexls = New System.Windows.Forms.Button()
         Me.btnImportxls = New System.Windows.Forms.Button()
-        Me.txtMaterial = New Grohe_Phyto.Watermark()
         Me.tabSetting = New System.Windows.Forms.TabPage()
-        Me.TotalDataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.TotalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DtMatCodeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DtMatCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DtHSCodeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DtHSCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsPhytoDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DsPhytoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsMaterialDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DsMaterialBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContainerDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DsContainerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnSignaturePath = New System.Windows.Forms.Button()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.txtSignature = New Grohe_Phyto.Watermark()
+        Me.DtMatCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DtHSCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsPhytoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsMaterialBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContainerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TotalTableAdapter = New Grohe_Phyto.dsGroheTableAdapters.TotalTableAdapter()
         Me.dlgFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.txtSearch = New Grohe_Phyto.Watermark()
+        Me.txtSheetMaterial = New Grohe_Phyto.Watermark()
+        Me.txtSignature = New Grohe_Phyto.Watermark()
+        Me.txtSheetHsCodes = New Grohe_Phyto.Watermark()
+        Me.txtSheetTango = New Grohe_Phyto.Watermark()
         STT_NOLabel = New System.Windows.Forms.Label()
         Archive_NoLabel = New System.Windows.Forms.Label()
         HBLLabel = New System.Windows.Forms.Label()
@@ -181,20 +150,14 @@ Partial Class frmMainInterface
         CType(Me.dgvMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabShipment.SuspendLayout()
         CType(Me.TotalDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TotalBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabImport.SuspendLayout()
         Me.tabSetting.SuspendLayout()
-        CType(Me.TotalDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TotalBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DtMatCodeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DtHSCodeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsMaterialDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsContainerDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContainerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -282,7 +245,7 @@ Partial Class frmMainInterface
         'PiecesLabel
         '
         PiecesLabel.AutoSize = True
-        PiecesLabel.Location = New System.Drawing.Point(322, 110)
+        PiecesLabel.Location = New System.Drawing.Point(322, 114)
         PiecesLabel.Name = "PiecesLabel"
         PiecesLabel.Size = New System.Drawing.Size(42, 13)
         PiecesLabel.TabIndex = 20
@@ -291,7 +254,7 @@ Partial Class frmMainInterface
         'VolumeLabel
         '
         VolumeLabel.AutoSize = True
-        VolumeLabel.Location = New System.Drawing.Point(322, 136)
+        VolumeLabel.Location = New System.Drawing.Point(322, 140)
         VolumeLabel.Name = "VolumeLabel"
         VolumeLabel.Size = New System.Drawing.Size(45, 13)
         VolumeLabel.TabIndex = 22
@@ -327,7 +290,7 @@ Partial Class frmMainInterface
         'WeightLabel
         '
         WeightLabel.AutoSize = True
-        WeightLabel.Location = New System.Drawing.Point(322, 162)
+        WeightLabel.Location = New System.Drawing.Point(322, 166)
         WeightLabel.Name = "WeightLabel"
         WeightLabel.Size = New System.Drawing.Size(44, 13)
         WeightLabel.TabIndex = 30
@@ -391,7 +354,7 @@ Partial Class frmMainInterface
         Me.tabControl.Location = New System.Drawing.Point(12, 12)
         Me.tabControl.Name = "tabControl"
         Me.tabControl.SelectedIndex = 0
-        Me.tabControl.Size = New System.Drawing.Size(776, 426)
+        Me.tabControl.Size = New System.Drawing.Size(947, 399)
         Me.tabControl.TabIndex = 3
         Me.tabControl.TabStop = False
         '
@@ -404,38 +367,32 @@ Partial Class frmMainInterface
         Me.tabOverview.Location = New System.Drawing.Point(4, 22)
         Me.tabOverview.Name = "tabOverview"
         Me.tabOverview.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabOverview.Size = New System.Drawing.Size(768, 400)
+        Me.tabOverview.Size = New System.Drawing.Size(939, 373)
         Me.tabOverview.TabIndex = 0
         Me.tabOverview.Text = "Overview"
         Me.tabOverview.UseVisualStyleBackColor = True
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(7, 12)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(185, 20)
-        Me.txtSearch.TabIndex = 3
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search...."
         '
         'cmbFilter
         '
         Me.cmbFilter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbFilter.FormattingEnabled = True
         Me.cmbFilter.Items.AddRange(New Object() {"Standard", "Phyto benötigt"})
-        Me.cmbFilter.Location = New System.Drawing.Point(546, 8)
+        Me.cmbFilter.Location = New System.Drawing.Point(717, 8)
         Me.cmbFilter.Name = "cmbFilter"
         Me.cmbFilter.Size = New System.Drawing.Size(216, 21)
         Me.cmbFilter.TabIndex = 2
+        Me.cmbFilter.TabStop = False
         '
         'btnSearch
         '
         Me.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnSearch.Image = Global.Grohe_Phyto.My.Resources.Resources._16
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSearch.Location = New System.Drawing.Point(198, 8)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(69, 27)
         Me.btnSearch.TabIndex = 1
+        Me.btnSearch.TabStop = False
         Me.btnSearch.Text = "Search"
         Me.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -454,8 +411,9 @@ Partial Class frmMainInterface
         Me.dgvMain.Location = New System.Drawing.Point(6, 38)
         Me.dgvMain.Name = "dgvMain"
         Me.dgvMain.ReadOnly = True
-        Me.dgvMain.Size = New System.Drawing.Size(756, 356)
+        Me.dgvMain.Size = New System.Drawing.Size(927, 329)
         Me.dgvMain.TabIndex = 0
+        Me.dgvMain.TabStop = False
         '
         'STTNODataGridViewTextBoxColumn
         '
@@ -621,17 +579,19 @@ Partial Class frmMainInterface
         Me.tabShipment.Location = New System.Drawing.Point(4, 22)
         Me.tabShipment.Name = "tabShipment"
         Me.tabShipment.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabShipment.Size = New System.Drawing.Size(768, 400)
+        Me.tabShipment.Size = New System.Drawing.Size(939, 373)
         Me.tabShipment.TabIndex = 3
         Me.tabShipment.Text = "Shipment"
         Me.tabShipment.UseVisualStyleBackColor = True
         '
         'btnWispexMail
         '
-        Me.btnWispexMail.Location = New System.Drawing.Point(779, 61)
+        Me.btnWispexMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnWispexMail.Location = New System.Drawing.Point(779, 143)
         Me.btnWispexMail.Name = "btnWispexMail"
-        Me.btnWispexMail.Size = New System.Drawing.Size(123, 39)
+        Me.btnWispexMail.Size = New System.Drawing.Size(98, 48)
         Me.btnWispexMail.TabIndex = 45
+        Me.btnWispexMail.TabStop = False
         Me.btnWispexMail.Text = "Wispex"
         Me.btnWispexMail.UseVisualStyleBackColor = True
         '
@@ -642,13 +602,50 @@ Partial Class frmMainInterface
         Me.TotalDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TotalDataGridView.AutoGenerateColumns = False
         Me.TotalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.TotalDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ContainerNoDataGridViewTextBoxColumn, Me.MaterialNoDataGridViewTextBoxColumn, Me.HSCodeDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn})
+        Me.TotalDataGridView.DataSource = Me.TotalBindingSource
         Me.TotalDataGridView.Location = New System.Drawing.Point(6, 197)
         Me.TotalDataGridView.Name = "TotalDataGridView"
         Me.TotalDataGridView.ReadOnly = True
-        Me.TotalDataGridView.Size = New System.Drawing.Size(1105, 8)
+        Me.TotalDataGridView.Size = New System.Drawing.Size(927, 170)
         Me.TotalDataGridView.TabIndex = 44
         Me.TotalDataGridView.TabStop = False
+        '
+        'ContainerNoDataGridViewTextBoxColumn
+        '
+        Me.ContainerNoDataGridViewTextBoxColumn.DataPropertyName = "Container_No"
+        Me.ContainerNoDataGridViewTextBoxColumn.HeaderText = "Container_No"
+        Me.ContainerNoDataGridViewTextBoxColumn.Name = "ContainerNoDataGridViewTextBoxColumn"
+        Me.ContainerNoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MaterialNoDataGridViewTextBoxColumn
+        '
+        Me.MaterialNoDataGridViewTextBoxColumn.DataPropertyName = "Material_No"
+        Me.MaterialNoDataGridViewTextBoxColumn.HeaderText = "Material_No"
+        Me.MaterialNoDataGridViewTextBoxColumn.Name = "MaterialNoDataGridViewTextBoxColumn"
+        Me.MaterialNoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'HSCodeDataGridViewTextBoxColumn
+        '
+        Me.HSCodeDataGridViewTextBoxColumn.DataPropertyName = "HS_Code"
+        Me.HSCodeDataGridViewTextBoxColumn.HeaderText = "HS_Code"
+        Me.HSCodeDataGridViewTextBoxColumn.Name = "HSCodeDataGridViewTextBoxColumn"
+        Me.HSCodeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TotalBindingSource
+        '
+        Me.TotalBindingSource.DataMember = "Total"
+        Me.TotalBindingSource.DataSource = Me.DsGrohe
         '
         'Label3
         '
@@ -662,7 +659,7 @@ Partial Class frmMainInterface
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(494, 107)
+        Me.DataGridView1.Location = New System.Drawing.Point(494, 110)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(132, 72)
         Me.DataGridView1.TabIndex = 43
@@ -728,7 +725,7 @@ Partial Class frmMainInterface
         'PiecesTextBox
         '
         Me.PiecesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DsShipmentsBindingSource, "Pieces", True))
-        Me.PiecesTextBox.Location = New System.Drawing.Point(426, 107)
+        Me.PiecesTextBox.Location = New System.Drawing.Point(426, 110)
         Me.PiecesTextBox.Name = "PiecesTextBox"
         Me.PiecesTextBox.Size = New System.Drawing.Size(52, 20)
         Me.PiecesTextBox.TabIndex = 13
@@ -736,7 +733,7 @@ Partial Class frmMainInterface
         'VolumeTextBox
         '
         Me.VolumeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DsShipmentsBindingSource, "Volume", True))
-        Me.VolumeTextBox.Location = New System.Drawing.Point(426, 133)
+        Me.VolumeTextBox.Location = New System.Drawing.Point(426, 136)
         Me.VolumeTextBox.Name = "VolumeTextBox"
         Me.VolumeTextBox.Size = New System.Drawing.Size(52, 20)
         Me.VolumeTextBox.TabIndex = 14
@@ -768,7 +765,7 @@ Partial Class frmMainInterface
         'WeightTextBox
         '
         Me.WeightTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DsShipmentsBindingSource, "Weight", True))
-        Me.WeightTextBox.Location = New System.Drawing.Point(426, 159)
+        Me.WeightTextBox.Location = New System.Drawing.Point(426, 162)
         Me.WeightTextBox.Name = "WeightTextBox"
         Me.WeightTextBox.Size = New System.Drawing.Size(52, 20)
         Me.WeightTextBox.TabIndex = 15
@@ -793,7 +790,7 @@ Partial Class frmMainInterface
         '
         'ReqPhytoDECheckBox
         '
-        Me.ReqPhytoDECheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "reqPhytoDE", True))
+        Me.ReqPhytoDECheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "reqDE", True))
         Me.ReqPhytoDECheckBox.Location = New System.Drawing.Point(632, 4)
         Me.ReqPhytoDECheckBox.Name = "ReqPhytoDECheckBox"
         Me.ReqPhytoDECheckBox.Size = New System.Drawing.Size(123, 24)
@@ -804,7 +801,7 @@ Partial Class frmMainInterface
         '
         'ChkModel99DoneCheckBox
         '
-        Me.ChkModel99DoneCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "chkModel99Done", True))
+        Me.ChkModel99DoneCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "chkNL", True))
         Me.ChkModel99DoneCheckBox.Location = New System.Drawing.Point(779, 30)
         Me.ChkModel99DoneCheckBox.Name = "ChkModel99DoneCheckBox"
         Me.ChkModel99DoneCheckBox.Size = New System.Drawing.Size(123, 24)
@@ -815,7 +812,7 @@ Partial Class frmMainInterface
         '
         'ChkPhytoDeCheckBox
         '
-        Me.ChkPhytoDeCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "chkPhytoDe", True))
+        Me.ChkPhytoDeCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "chkDE", True))
         Me.ChkPhytoDeCheckBox.Location = New System.Drawing.Point(632, 30)
         Me.ChkPhytoDeCheckBox.Name = "ChkPhytoDeCheckBox"
         Me.ChkPhytoDeCheckBox.Size = New System.Drawing.Size(123, 24)
@@ -826,7 +823,7 @@ Partial Class frmMainInterface
         '
         'ReqModel99CheckBox
         '
-        Me.ReqModel99CheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "reqModel99", True))
+        Me.ReqModel99CheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsShipmentsBindingSource, "reqNL", True))
         Me.ReqModel99CheckBox.Location = New System.Drawing.Point(779, 4)
         Me.ReqModel99CheckBox.Name = "ReqModel99CheckBox"
         Me.ReqModel99CheckBox.Size = New System.Drawing.Size(123, 24)
@@ -838,7 +835,8 @@ Partial Class frmMainInterface
         'btnShipmentsSave
         '
         Me.btnShipmentsSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnShipmentsSave.Location = New System.Drawing.Point(1058, -135)
+        Me.btnShipmentsSave.Image = Global.Grohe_Phyto.My.Resources.Resources.save
+        Me.btnShipmentsSave.Location = New System.Drawing.Point(883, 143)
         Me.btnShipmentsSave.Name = "btnShipmentsSave"
         Me.btnShipmentsSave.Size = New System.Drawing.Size(50, 48)
         Me.btnShipmentsSave.TabIndex = 42
@@ -848,10 +846,10 @@ Partial Class frmMainInterface
         'tabImport
         '
         Me.tabImport.AllowDrop = True
+        Me.tabImport.Controls.Add(Me.txtSheetTango)
+        Me.tabImport.Controls.Add(Me.txtSheetHsCodes)
         Me.tabImport.Controls.Add(Me.ProgressBar)
         Me.tabImport.Controls.Add(Me.chkDelete)
-        Me.tabImport.Controls.Add(Me.txtSheetHsCodes)
-        Me.tabImport.Controls.Add(Me.txtSheetTango)
         Me.tabImport.Controls.Add(Me.txtGroheInfo)
         Me.tabImport.Controls.Add(Me.txtHSCodes)
         Me.tabImport.Controls.Add(Me.txtTango)
@@ -860,12 +858,12 @@ Partial Class frmMainInterface
         Me.tabImport.Controls.Add(Me.Label1)
         Me.tabImport.Controls.Add(Me.btnHSCodes)
         Me.tabImport.Controls.Add(Me.btnGrohexls)
+        Me.tabImport.Controls.Add(Me.txtSheetMaterial)
         Me.tabImport.Controls.Add(Me.btnImportxls)
-        Me.tabImport.Controls.Add(Me.txtMaterial)
         Me.tabImport.Location = New System.Drawing.Point(4, 22)
         Me.tabImport.Name = "tabImport"
         Me.tabImport.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabImport.Size = New System.Drawing.Size(768, 400)
+        Me.tabImport.Size = New System.Drawing.Size(939, 373)
         Me.tabImport.TabIndex = 2
         Me.tabImport.Text = "Import"
         Me.tabImport.UseVisualStyleBackColor = True
@@ -873,85 +871,70 @@ Partial Class frmMainInterface
         'ProgressBar
         '
         Me.ProgressBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar.Location = New System.Drawing.Point(209, -69)
+        Me.ProgressBar.Location = New System.Drawing.Point(87, 123)
         Me.ProgressBar.Name = "ProgressBar"
-        Me.ProgressBar.Size = New System.Drawing.Size(284, 23)
+        Me.ProgressBar.Size = New System.Drawing.Size(406, 43)
         Me.ProgressBar.TabIndex = 6
         '
         'chkDelete
         '
         Me.chkDelete.AutoSize = True
-        Me.chkDelete.Location = New System.Drawing.Point(75, 161)
+        Me.chkDelete.Location = New System.Drawing.Point(9, 172)
         Me.chkDelete.Name = "chkDelete"
         Me.chkDelete.Size = New System.Drawing.Size(128, 17)
         Me.chkDelete.TabIndex = 20
+        Me.chkDelete.TabStop = False
         Me.chkDelete.Text = "Delete file after import"
         Me.chkDelete.UseVisualStyleBackColor = True
-        '
-        'txtSheetHsCodes
-        '
-        Me.txtSheetHsCodes.AllowDrop = True
-        Me.txtSheetHsCodes.Location = New System.Drawing.Point(376, 74)
-        Me.txtSheetHsCodes.Name = "txtSheetHsCodes"
-        Me.txtSheetHsCodes.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetHsCodes.TabIndex = 15
-        Me.txtSheetHsCodes.Text = "Sheet1"
-        '
-        'txtSheetTango
-        '
-        Me.txtSheetTango.AllowDrop = True
-        Me.txtSheetTango.Location = New System.Drawing.Point(376, 45)
-        Me.txtSheetTango.Name = "txtSheetTango"
-        Me.txtSheetTango.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetTango.TabIndex = 14
-        Me.txtSheetTango.Text = "Excel Export1"
         '
         'txtGroheInfo
         '
         Me.txtGroheInfo.AllowDrop = True
-        Me.txtGroheInfo.Location = New System.Drawing.Point(87, 103)
+        Me.txtGroheInfo.Location = New System.Drawing.Point(87, 95)
         Me.txtGroheInfo.Name = "txtGroheInfo"
         Me.txtGroheInfo.Size = New System.Drawing.Size(283, 20)
-        Me.txtGroheInfo.TabIndex = 12
+        Me.txtGroheInfo.TabIndex = 5
         '
         'txtHSCodes
         '
         Me.txtHSCodes.AllowDrop = True
-        Me.txtHSCodes.Location = New System.Drawing.Point(87, 74)
+        Me.txtHSCodes.Location = New System.Drawing.Point(87, 69)
         Me.txtHSCodes.Name = "txtHSCodes"
         Me.txtHSCodes.Size = New System.Drawing.Size(283, 20)
-        Me.txtHSCodes.TabIndex = 11
+        Me.txtHSCodes.TabIndex = 3
         '
         'txtTango
         '
         Me.txtTango.AllowDrop = True
-        Me.txtTango.Location = New System.Drawing.Point(87, 45)
+        Me.txtTango.Location = New System.Drawing.Point(87, 43)
         Me.txtTango.Name = "txtTango"
         Me.txtTango.Size = New System.Drawing.Size(283, 20)
-        Me.txtTango.TabIndex = 10
+        Me.txtTango.TabIndex = 1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(6, 227)
+        Me.Button1.Location = New System.Drawing.Point(418, 172)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 7
+        Me.Button1.TabStop = False
         Me.Button1.Text = "Phyto"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'btnTango
         '
-        Me.btnTango.Location = New System.Drawing.Point(6, 43)
+        Me.btnTango.Location = New System.Drawing.Point(6, 42)
         Me.btnTango.Name = "btnTango"
         Me.btnTango.Size = New System.Drawing.Size(75, 23)
         Me.btnTango.TabIndex = 3
+        Me.btnTango.TabStop = False
         Me.btnTango.Text = "Tango"
         Me.btnTango.UseVisualStyleBackColor = True
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(43, 27)
+        Me.Label1.Location = New System.Drawing.Point(6, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 13)
         Me.Label1.TabIndex = 0
@@ -959,49 +942,37 @@ Partial Class frmMainInterface
         '
         'btnHSCodes
         '
-        Me.btnHSCodes.Location = New System.Drawing.Point(6, 72)
+        Me.btnHSCodes.Location = New System.Drawing.Point(6, 68)
         Me.btnHSCodes.Name = "btnHSCodes"
         Me.btnHSCodes.Size = New System.Drawing.Size(75, 23)
         Me.btnHSCodes.TabIndex = 1
+        Me.btnHSCodes.TabStop = False
         Me.btnHSCodes.Text = "HS Codes"
         Me.btnHSCodes.UseVisualStyleBackColor = True
         '
         'btnGrohexls
         '
-        Me.btnGrohexls.Location = New System.Drawing.Point(6, 101)
+        Me.btnGrohexls.Location = New System.Drawing.Point(6, 94)
         Me.btnGrohexls.Name = "btnGrohexls"
         Me.btnGrohexls.Size = New System.Drawing.Size(75, 23)
         Me.btnGrohexls.TabIndex = 2
+        Me.btnGrohexls.TabStop = False
         Me.btnGrohexls.Text = "Grohe xls"
         Me.btnGrohexls.UseVisualStyleBackColor = True
         '
         'btnImportxls
         '
-        Me.btnImportxls.Location = New System.Drawing.Point(6, 135)
+        Me.btnImportxls.Image = Global.Grohe_Phyto.My.Resources.Resources.database__1_
+        Me.btnImportxls.Location = New System.Drawing.Point(9, 123)
         Me.btnImportxls.Name = "btnImportxls"
-        Me.btnImportxls.Size = New System.Drawing.Size(63, 43)
+        Me.btnImportxls.Size = New System.Drawing.Size(72, 43)
         Me.btnImportxls.TabIndex = 13
+        Me.btnImportxls.TabStop = False
         Me.btnImportxls.UseVisualStyleBackColor = True
-        '
-        'txtMaterial
-        '
-        Me.txtMaterial.Location = New System.Drawing.Point(376, 103)
-        Me.txtMaterial.Name = "txtMaterial"
-        Me.txtMaterial.Size = New System.Drawing.Size(117, 20)
-        Me.txtMaterial.TabIndex = 18
-        Me.txtMaterial.Text = "Tabelle3"
-        Me.txtMaterial.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtMaterial.WatermarkText = "Material"
         '
         'tabSetting
         '
         Me.tabSetting.AutoScroll = True
-        Me.tabSetting.Controls.Add(Me.TotalDataGridView1)
-        Me.tabSetting.Controls.Add(Me.DtMatCodeDataGridView)
-        Me.tabSetting.Controls.Add(Me.DtHSCodeDataGridView)
-        Me.tabSetting.Controls.Add(Me.DsPhytoDataGridView)
-        Me.tabSetting.Controls.Add(Me.DsMaterialDataGridView)
-        Me.tabSetting.Controls.Add(Me.DsContainerDataGridView)
         Me.tabSetting.Controls.Add(Me.btnSignaturePath)
         Me.tabSetting.Controls.Add(Me.LinkLabel2)
         Me.tabSetting.Controls.Add(Me.LinkLabel1)
@@ -1009,289 +980,14 @@ Partial Class frmMainInterface
         Me.tabSetting.Location = New System.Drawing.Point(4, 22)
         Me.tabSetting.Name = "tabSetting"
         Me.tabSetting.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tabSetting.Size = New System.Drawing.Size(768, 400)
+        Me.tabSetting.Size = New System.Drawing.Size(939, 373)
         Me.tabSetting.TabIndex = 4
         Me.tabSetting.Text = "Settings"
         Me.tabSetting.UseVisualStyleBackColor = True
         '
-        'TotalDataGridView1
-        '
-        Me.TotalDataGridView1.AutoGenerateColumns = False
-        Me.TotalDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.TotalDataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewCheckBoxColumn3})
-        Me.TotalDataGridView1.DataSource = Me.TotalBindingSource
-        Me.TotalDataGridView1.Location = New System.Drawing.Point(101, 120)
-        Me.TotalDataGridView1.Name = "TotalDataGridView1"
-        Me.TotalDataGridView1.Size = New System.Drawing.Size(300, 220)
-        Me.TotalDataGridView1.TabIndex = 9
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "STT_NO"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "STT_NO"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "Archive_No"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "Archive_No"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "Origin"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Origin"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        '
-        'DataGridViewTextBoxColumn23
-        '
-        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Material_ID"
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Material_ID"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "Material_No"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Material_No"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "HS_Code"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "HS_Code"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        '
-        'DataGridViewTextBoxColumn26
-        '
-        Me.DataGridViewTextBoxColumn26.DataPropertyName = "Description"
-        Me.DataGridViewTextBoxColumn26.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
-        '
-        'DataGridViewTextBoxColumn27
-        '
-        Me.DataGridViewTextBoxColumn27.DataPropertyName = "Container_No"
-        Me.DataGridViewTextBoxColumn27.HeaderText = "Container_No"
-        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
-        '
-        'DataGridViewCheckBoxColumn3
-        '
-        Me.DataGridViewCheckBoxColumn3.DataPropertyName = "chkPhytoDone"
-        Me.DataGridViewCheckBoxColumn3.HeaderText = "chkPhytoDone"
-        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
-        '
-        'TotalBindingSource
-        '
-        Me.TotalBindingSource.DataMember = "Total"
-        Me.TotalBindingSource.DataSource = Me.DsGrohe
-        '
-        'DtMatCodeDataGridView
-        '
-        Me.DtMatCodeDataGridView.AutoGenerateColumns = False
-        Me.DtMatCodeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DtMatCodeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19})
-        Me.DtMatCodeDataGridView.DataSource = Me.DtMatCodeBindingSource
-        Me.DtMatCodeDataGridView.Location = New System.Drawing.Point(451, 95)
-        Me.DtMatCodeDataGridView.Name = "DtMatCodeDataGridView"
-        Me.DtMatCodeDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.DtMatCodeDataGridView.TabIndex = 8
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Material_ID"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Material_ID"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Created"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Created"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "HS_Code"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "HS_Code"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.DataPropertyName = "Description"
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'DtMatCodeBindingSource
-        '
-        Me.DtMatCodeBindingSource.DataMember = "dtMatCode"
-        Me.DtMatCodeBindingSource.DataSource = Me.DsGrohe
-        '
-        'DtHSCodeDataGridView
-        '
-        Me.DtHSCodeDataGridView.AutoGenerateColumns = False
-        Me.DtHSCodeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DtHSCodeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15})
-        Me.DtHSCodeDataGridView.DataSource = Me.DtHSCodeBindingSource
-        Me.DtHSCodeDataGridView.Location = New System.Drawing.Point(125, 154)
-        Me.DtHSCodeDataGridView.Name = "DtHSCodeDataGridView"
-        Me.DtHSCodeDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.DtHSCodeDataGridView.TabIndex = 7
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "HS_Code"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "HS_Code"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Created"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Created"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        '
-        'DtHSCodeBindingSource
-        '
-        Me.DtHSCodeBindingSource.DataMember = "dtHSCode"
-        Me.DtHSCodeBindingSource.DataSource = Me.DsGrohe
-        '
-        'DsPhytoDataGridView
-        '
-        Me.DsPhytoDataGridView.AutoGenerateColumns = False
-        Me.DsPhytoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DsPhytoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewCheckBoxColumn2, Me.DataGridViewTextBoxColumn13})
-        Me.DsPhytoDataGridView.DataSource = Me.DsPhytoBindingSource
-        Me.DsPhytoDataGridView.Location = New System.Drawing.Point(203, 177)
-        Me.DsPhytoDataGridView.Name = "DsPhytoDataGridView"
-        Me.DsPhytoDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.DsPhytoDataGridView.TabIndex = 6
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Phyto_ID"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Phyto_ID"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Created"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Created"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "HS_Code"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "HS_Code"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Origin"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Origin"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "reqModel99"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "reqModel99"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "reqPhytoDE"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "reqPhytoDE"
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "chklatest"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "chklatest"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
-        'DsPhytoBindingSource
-        '
-        Me.DsPhytoBindingSource.DataMember = "dsPhyto"
-        Me.DsPhytoBindingSource.DataSource = Me.DsGrohe
-        '
-        'DsMaterialDataGridView
-        '
-        Me.DsMaterialDataGridView.AutoGenerateColumns = False
-        Me.DsMaterialDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DsMaterialDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
-        Me.DsMaterialDataGridView.DataSource = Me.DsMaterialBindingSource
-        Me.DsMaterialDataGridView.Location = New System.Drawing.Point(269, 178)
-        Me.DsMaterialDataGridView.Name = "DsMaterialDataGridView"
-        Me.DsMaterialDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.DsMaterialDataGridView.TabIndex = 5
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Material_ID"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Material_ID"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Created"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Created"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Container_ID"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Container_ID"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "Material_No"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Material_No"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DsMaterialBindingSource
-        '
-        Me.DsMaterialBindingSource.DataMember = "dsMaterial"
-        Me.DsMaterialBindingSource.DataSource = Me.DsGrohe
-        '
-        'DsContainerDataGridView
-        '
-        Me.DsContainerDataGridView.AutoGenerateColumns = False
-        Me.DsContainerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DsContainerDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4})
-        Me.DsContainerDataGridView.DataSource = Me.DsContainerBindingSource
-        Me.DsContainerDataGridView.Location = New System.Drawing.Point(344, 203)
-        Me.DsContainerDataGridView.Name = "DsContainerDataGridView"
-        Me.DsContainerDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.DsContainerDataGridView.TabIndex = 5
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Container_ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Container_ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Created"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Created"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Container_No"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Container_No"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "STT_No"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "STT_No"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DsContainerBindingSource
-        '
-        Me.DsContainerBindingSource.DataMember = "dsContainer"
-        Me.DsContainerBindingSource.DataSource = Me.DsGrohe
-        '
         'btnSignaturePath
         '
+        Me.btnSignaturePath.Image = Global.Grohe_Phyto.My.Resources.Resources.folder
         Me.btnSignaturePath.Location = New System.Drawing.Point(299, 22)
         Me.btnSignaturePath.Name = "btnSignaturePath"
         Me.btnSignaturePath.Size = New System.Drawing.Size(27, 20)
@@ -1318,14 +1014,30 @@ Partial Class frmMainInterface
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Icon made by Freepik from www.flaticon.com"
         '
-        'txtSignature
+        'DtMatCodeBindingSource
         '
-        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
-        Me.txtSignature.Name = "txtSignature"
-        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
-        Me.txtSignature.TabIndex = 4
-        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSignature.WatermarkText = "Signature Path"
+        Me.DtMatCodeBindingSource.DataMember = "dtMatCode"
+        Me.DtMatCodeBindingSource.DataSource = Me.DsGrohe
+        '
+        'DtHSCodeBindingSource
+        '
+        Me.DtHSCodeBindingSource.DataMember = "dtHSCode"
+        Me.DtHSCodeBindingSource.DataSource = Me.DsGrohe
+        '
+        'DsPhytoBindingSource
+        '
+        Me.DsPhytoBindingSource.DataMember = "dsPhyto"
+        Me.DsPhytoBindingSource.DataSource = Me.DsGrohe
+        '
+        'DsMaterialBindingSource
+        '
+        Me.DsMaterialBindingSource.DataMember = "dsMaterial"
+        Me.DsMaterialBindingSource.DataSource = Me.DsGrohe
+        '
+        'DsContainerBindingSource
+        '
+        Me.DsContainerBindingSource.DataMember = "dsContainer"
+        Me.DsContainerBindingSource.DataSource = Me.DsGrohe
         '
         'TotalTableAdapter
         '
@@ -1335,12 +1047,58 @@ Partial Class frmMainInterface
         '
         Me.dlgFileDialog.FileName = "x"
         '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(7, 12)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(185, 20)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search...."
+        '
+        'txtSheetMaterial
+        '
+        Me.txtSheetMaterial.Location = New System.Drawing.Point(376, 95)
+        Me.txtSheetMaterial.Name = "txtSheetMaterial"
+        Me.txtSheetMaterial.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetMaterial.TabIndex = 6
+        Me.txtSheetMaterial.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetMaterial.WatermarkText = "Sheet Name"
+        '
+        'txtSignature
+        '
+        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
+        Me.txtSignature.Name = "txtSignature"
+        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
+        Me.txtSignature.TabIndex = 4
+        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSignature.WatermarkText = "Signature Path"
+        '
+        'txtSheetHsCodes
+        '
+        Me.txtSheetHsCodes.Location = New System.Drawing.Point(376, 69)
+        Me.txtSheetHsCodes.Name = "txtSheetHsCodes"
+        Me.txtSheetHsCodes.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetHsCodes.TabIndex = 4
+        Me.txtSheetHsCodes.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetHsCodes.WatermarkText = "Sheet Name"
+        '
+        'txtSheetTango
+        '
+        Me.txtSheetTango.Location = New System.Drawing.Point(376, 43)
+        Me.txtSheetTango.Name = "txtSheetTango"
+        Me.txtSheetTango.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetTango.TabIndex = 2
+        Me.txtSheetTango.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetTango.WatermarkText = "Sheet Name"
+        '
         'frmMainInterface
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(971, 423)
         Me.Controls.Add(Me.tabControl)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMainInterface"
         Me.Text = "Grohe Phyto"
         CType(Me.DsGrohe, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1352,22 +1110,16 @@ Partial Class frmMainInterface
         Me.tabShipment.ResumeLayout(False)
         Me.tabShipment.PerformLayout()
         CType(Me.TotalDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TotalBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabImport.ResumeLayout(False)
         Me.tabImport.PerformLayout()
         Me.tabSetting.ResumeLayout(False)
         Me.tabSetting.PerformLayout()
-        CType(Me.TotalDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TotalBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DtMatCodeDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DtHSCodeDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsMaterialDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsContainerDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsContainerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -1427,8 +1179,6 @@ Partial Class frmMainInterface
     Friend WithEvents tabImport As TabPage
     Friend WithEvents ProgressBar As ProgressBar
     Friend WithEvents chkDelete As CheckBox
-    Friend WithEvents txtSheetHsCodes As TextBox
-    Friend WithEvents txtSheetTango As TextBox
     Friend WithEvents txtGroheInfo As TextBox
     Friend WithEvents txtHSCodes As TextBox
     Friend WithEvents txtTango As TextBox
@@ -1438,7 +1188,7 @@ Partial Class frmMainInterface
     Friend WithEvents btnHSCodes As Button
     Friend WithEvents btnGrohexls As Button
     Friend WithEvents btnImportxls As Button
-    Friend WithEvents txtMaterial As Watermark
+    Friend WithEvents txtSheetMaterial As Watermark
     Friend WithEvents tabSetting As TabPage
     Friend WithEvents btnSignaturePath As Button
     Friend WithEvents LinkLabel2 As LinkLabel
@@ -1447,50 +1197,20 @@ Partial Class frmMainInterface
     Friend WithEvents DsContainerTableAdapter As dsGroheTableAdapters.dsContainerTableAdapter
     Friend WithEvents DsContainerBindingSource As BindingSource
     Friend WithEvents DsMaterialTableAdapter As dsGroheTableAdapters.dsMaterialTableAdapter
-    Friend WithEvents DsContainerDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DsMaterialBindingSource As BindingSource
     Friend WithEvents DsPhytoTableAdapter As dsGroheTableAdapters.dsPhytoTableAdapter
-    Friend WithEvents DsMaterialDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DsPhytoBindingSource As BindingSource
     Friend WithEvents DtHSCodeTableAdapter As dsGroheTableAdapters.dtHSCodeTableAdapter
-    Friend WithEvents DsPhytoDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents DtHSCodeBindingSource As BindingSource
     Friend WithEvents DtMatCodeTableAdapter As dsGroheTableAdapters.dtMatCodeTableAdapter
-    Friend WithEvents DtHSCodeDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DtMatCodeBindingSource As BindingSource
-    Friend WithEvents DtMatCodeDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents TotalBindingSource As BindingSource
     Friend WithEvents TotalTableAdapter As dsGroheTableAdapters.TotalTableAdapter
-    Friend WithEvents TotalDataGridView1 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn3 As DataGridViewCheckBoxColumn
     Friend WithEvents dlgFileDialog As OpenFileDialog
+    Friend WithEvents ContainerNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MaterialNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents HSCodeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents txtSheetTango As Watermark
+    Friend WithEvents txtSheetHsCodes As Watermark
 End Class

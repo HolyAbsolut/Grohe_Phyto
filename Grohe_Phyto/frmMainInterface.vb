@@ -17,6 +17,11 @@ Public Class frmMainInterface
 
         chkDelete.Checked = My.Settings.DeleteFile
         txtSignature.Text = My.Settings.sttSignature
+        txtSheetTango.Text = My.Settings.shtTango
+        txtSheetHsCodes.Text = My.Settings.shtHSCode
+        txtSheetMaterial.Text = My.Settings.shtGrohe
+
+
         LoadDb()
 
 
@@ -273,14 +278,16 @@ Public Class frmMainInterface
         For Each Row As DataRow In tblImport.Rows
 
             'Prüfen ob Record bereits vorhanden
-            If Row("Delivery").ToString() <> "" And Row("Material").ToString() <> "" Then
-                DsMaterialBindingSource.Filter = "Container_ID = '" & getContainerID(Row("Delivery").ToString()) & "' AND Material_No = '" & Row("Material").ToString() & "'"
-                If DsMaterialBindingSource.Count = 0 Then
+            If Row("Referenz").ToString() <> "" And Row("Material").ToString() <> "" Then
+                Dim ContNo As String = Row("Referenz").ToString().Substring(Row("Referenz").ToString().Length - 11, 11)
+
+                DsMaterialBindingSource.Filter = "Container_ID = '" & getContainerID(ContNo) & "' AND Material_No = '" & Row("Material").ToString() & "'"
+                If DsMaterialBindingSource.Count = 0 And getContainerID(ContNo) <> 0 Then
 
                     'Neu Anlegen
                     Dim newRow As dsGrohe.dsMaterialRow
                     newRow = DsGrohe.dsMaterial.NewdsMaterialRow
-                    newRow.Container_ID = getContainerID("")
+                    newRow.Container_ID = getContainerID(ContNo)
                     newRow.Material_No = Row("Material").ToString()
                     newRow.Created = Date.Now
                     DsGrohe.dsMaterial.Rows.Add(newRow)
@@ -565,7 +572,7 @@ Public Class frmMainInterface
 
     Private Sub btnGrohexls_Click(sender As Object, e As EventArgs) Handles btnGrohexls.Click
         If txtGroheInfo.Text <> "" Then
-            If txtMaterial.Text <> "" Then ImportMaterial(txtGroheInfo.Text, txtMaterial.Text)
+            If txtSheetMaterial.Text <> "" Then ImportMaterial(txtGroheInfo.Text, txtSheetMaterial.Text)
             'If txtSheetMaterial.Text <> "" Then ImportMaterliaNo(txtGroheInfo.Text, txtSheetMaterial.Text)
         End If
     End Sub
@@ -622,7 +629,7 @@ Public Class frmMainInterface
             Case "Standard"
                 DsShipmentsBindingSource.RemoveFilter()
             Case "Phyto benötigt"
-                DsShipmentsBindingSource.Filter = "reqModel99 = True AND chkModel99Done = False or reqPhytoDE= True AND chkPhytoDe = False"
+                DsShipmentsBindingSource.Filter = "reqNL = True AND chkNL = False or reqDE= True AND chkDE = False"
             Case Else
                 DsShipmentsBindingSource.RemoveFilter()
         End Select
@@ -648,7 +655,7 @@ Public Class frmMainInterface
         End If
 
         If txtGroheInfo.Text <> "" Then
-            If txtMaterial.Text <> "" Then ImportMaterial(txtGroheInfo.Text, txtMaterial.Text)
+            If txtSheetMaterial.Text <> "" Then ImportMaterial(txtGroheInfo.Text, txtSheetMaterial.Text)
         End If
 
         chkPhytoRequiered()
@@ -710,9 +717,9 @@ Public Class frmMainInterface
         For Each row As DataGridViewRow In TotalDataGridView.Rows
             bdyTable = bdyTable & "<tr> 
             <td style='width: 6.91748%;'>" & POLTextBox.Text.Substring(0, 2) & "</td>
-            <td style='width: 12.9854%;'>" & row.Cells(2).Value.ToString & "</td>
-            <td style ='width: 14.3204%;'>" & row.Cells(3).Value.ToString & "</td>
-            <td style='width: 37.8641%;'>" & row.Cells(4).Value.ToString & "</td>
+            <td style='width: 12.9854%;'>" & row.Cells(1).Value.ToString & "</td>
+            <td style ='width: 14.3204%;'>" & row.Cells(2).Value.ToString & "</td>
+            <td style='width: 37.8641%;'>" & row.Cells(3).Value.ToString & "</td>
             <td style ='width: 16.1408%;'>" & row.Cells(0).Value.ToString & "</td></tr>"
         Next
         bdyTable = bdyTable & "</tbody></table>"
@@ -748,5 +755,10 @@ Public Class frmMainInterface
     End Sub
 
 
+    Private Sub txtSheetTango_Leave(sender As Object, e As EventArgs) Handles txtSheetMaterial.Leave
+        My.Settings.shtTango = txtSheetTango.Text
+        My.Settings.shtHSCode = txtSheetHsCodes.Text
+        My.Settings.shtGrohe = txtSheetMaterial.Text
 
+    End Sub
 End Class

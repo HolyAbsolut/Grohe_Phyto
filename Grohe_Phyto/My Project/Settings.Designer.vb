@@ -100,6 +100,42 @@ Namespace My
                 Me("sttSignature") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property shtTango() As String
+            Get
+                Return CType(Me("shtTango"),String)
+            End Get
+            Set
+                Me("shtTango") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property shtHSCode() As String
+            Get
+                Return CType(Me("shtHSCode"),String)
+            End Get
+            Set
+                Me("shtHSCode") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property shtGrohe() As String
+            Get
+                Return CType(Me("shtGrohe"),String)
+            End Get
+            Set
+                Me("shtGrohe") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

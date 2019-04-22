@@ -49,6 +49,8 @@ Partial Public Class dsGrohe
     
     Private relationFK_dtMatCode_dtHSCode_0 As Global.System.Data.DataRelation
     
+    Private relationdtMatCode_dsMaterial As Global.System.Data.DataRelation
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -374,6 +376,7 @@ Partial Public Class dsGrohe
         Me.relationFK_dsMaterial_dsContainer_1 = Me.Relations("FK_dsMaterial_dsContainer_1")
         Me.relationFK_dsPhyto_dtHSCode_0 = Me.Relations("FK_dsPhyto_dtHSCode_0")
         Me.relationFK_dtMatCode_dtHSCode_0 = Me.Relations("FK_dtMatCode_dtHSCode_0")
+        Me.relationdtMatCode_dsMaterial = Me.Relations("dtMatCode_dsMaterial")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -408,6 +411,8 @@ Partial Public Class dsGrohe
         Me.Relations.Add(Me.relationFK_dsPhyto_dtHSCode_0)
         Me.relationFK_dtMatCode_dtHSCode_0 = New Global.System.Data.DataRelation("FK_dtMatCode_dtHSCode_0", New Global.System.Data.DataColumn() {Me.tabledtHSCode.HS_CodeColumn}, New Global.System.Data.DataColumn() {Me.tabledtMatCode.HS_CodeColumn}, false)
         Me.Relations.Add(Me.relationFK_dtMatCode_dtHSCode_0)
+        Me.relationdtMatCode_dsMaterial = New Global.System.Data.DataRelation("dtMatCode_dsMaterial", New Global.System.Data.DataColumn() {Me.tabledtMatCode.Material_IDColumn}, New Global.System.Data.DataColumn() {Me.tabledsMaterial.Material_NoColumn}, false)
+        Me.Relations.Add(Me.relationdtMatCode_dsMaterial)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -660,9 +665,9 @@ Partial Public Class dsGrohe
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AdddsContainerRow(ByVal Container_ID As Long, ByVal Created As Date, ByVal Container_No As String, ByVal parentdsShipmentsRowByFK_dsContainer_dsShipments_0 As dsShipmentsRow) As dsContainerRow
+        Public Overloads Function AdddsContainerRow(ByVal Created As Date, ByVal Container_No As String, ByVal parentdsShipmentsRowByFK_dsContainer_dsShipments_0 As dsShipmentsRow) As dsContainerRow
             Dim rowdsContainerRow As dsContainerRow = CType(Me.NewRow,dsContainerRow)
-            Dim columnValuesArray() As Object = New Object() {Container_ID, Created, Container_No, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Created, Container_No, Nothing}
             If (Not (parentdsShipmentsRowByFK_dsContainer_dsShipments_0) Is Nothing) Then
                 columnValuesArray(3) = parentdsShipmentsRowByFK_dsContainer_dsShipments_0(0)
             End If
@@ -712,6 +717,8 @@ Partial Public Class dsGrohe
             Me.columnSTT_No = New Global.System.Data.DataColumn("STT_No", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSTT_No)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnContainer_ID}, true))
+            Me.columnContainer_ID.AutoIncrement = true
+            Me.columnContainer_ID.AutoIncrementSeed = 1
             Me.columnContainer_ID.AllowDBNull = false
             Me.columnContainer_ID.Unique = true
             Me.columnCreated.AllowDBNull = false
@@ -965,11 +972,14 @@ Partial Public Class dsGrohe
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AdddsMaterialRow(ByVal Material_ID As Long, ByVal Created As Date, ByVal parentdsContainerRowByFK_dsMaterial_dsContainer_1 As dsContainerRow, ByVal Material_No As String) As dsMaterialRow
+        Public Overloads Function AdddsMaterialRow(ByVal Created As Date, ByVal parentdsContainerRowByFK_dsMaterial_dsContainer_1 As dsContainerRow, ByVal parentdtMatCodeRowBydtMatCode_dsMaterial As dtMatCodeRow) As dsMaterialRow
             Dim rowdsMaterialRow As dsMaterialRow = CType(Me.NewRow,dsMaterialRow)
-            Dim columnValuesArray() As Object = New Object() {Material_ID, Created, Nothing, Material_No}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Created, Nothing, Nothing}
             If (Not (parentdsContainerRowByFK_dsMaterial_dsContainer_1) Is Nothing) Then
                 columnValuesArray(2) = parentdsContainerRowByFK_dsMaterial_dsContainer_1(0)
+            End If
+            If (Not (parentdtMatCodeRowBydtMatCode_dsMaterial) Is Nothing) Then
+                columnValuesArray(3) = parentdtMatCodeRowBydtMatCode_dsMaterial(0)
             End If
             rowdsMaterialRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdsMaterialRow)
@@ -1017,6 +1027,8 @@ Partial Public Class dsGrohe
             Me.columnMaterial_No = New Global.System.Data.DataColumn("Material_No", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMaterial_No)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnMaterial_ID}, true))
+            Me.columnMaterial_ID.AutoIncrement = true
+            Me.columnMaterial_ID.AutoIncrementSeed = 1
             Me.columnMaterial_ID.AllowDBNull = false
             Me.columnMaterial_ID.Unique = true
             Me.columnCreated.AllowDBNull = false
@@ -1301,9 +1313,9 @@ Partial Public Class dsGrohe
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AdddsPhytoRow(ByVal Phyto_ID As Long, ByVal Created As Date, ByVal parentdtHSCodeRowByFK_dsPhyto_dtHSCode_0 As dtHSCodeRow, ByVal Origin As String, ByVal reqModel99 As Boolean, ByVal reqPhytoDE As Boolean, ByVal chklatest As Date) As dsPhytoRow
+        Public Overloads Function AdddsPhytoRow(ByVal Created As Date, ByVal parentdtHSCodeRowByFK_dsPhyto_dtHSCode_0 As dtHSCodeRow, ByVal Origin As String, ByVal reqModel99 As Boolean, ByVal reqPhytoDE As Boolean, ByVal chklatest As Date) As dsPhytoRow
             Dim rowdsPhytoRow As dsPhytoRow = CType(Me.NewRow,dsPhytoRow)
-            Dim columnValuesArray() As Object = New Object() {Phyto_ID, Created, Nothing, Origin, reqModel99, reqPhytoDE, chklatest}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Created, Nothing, Origin, reqModel99, reqPhytoDE, chklatest}
             If (Not (parentdtHSCodeRowByFK_dsPhyto_dtHSCode_0) Is Nothing) Then
                 columnValuesArray(2) = parentdtHSCodeRowByFK_dsPhyto_dtHSCode_0(0)
             End If
@@ -1362,6 +1374,8 @@ Partial Public Class dsGrohe
             Me.columnchklatest = New Global.System.Data.DataColumn("chklatest", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnchklatest)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPhyto_ID}, true))
+            Me.columnPhyto_ID.AutoIncrement = true
+            Me.columnPhyto_ID.AutoIncrementSeed = 1
             Me.columnPhyto_ID.AllowDBNull = false
             Me.columnPhyto_ID.Unique = true
             Me.columnCreated.AllowDBNull = false
@@ -3423,6 +3437,17 @@ Partial Public Class dsGrohe
                 Me.SetParentRow(value, Me.Table.ParentRelations("FK_dsMaterial_dsContainer_1"))
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property dtMatCodeRow() As dtMatCodeRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("dtMatCode_dsMaterial")),dtMatCodeRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("dtMatCode_dsMaterial"))
+            End Set
+        End Property
     End Class
     
     '''<summary>
@@ -4217,6 +4242,16 @@ Partial Public Class dsGrohe
         Public Sub SetDescriptionNull()
             Me(Me.tabledtMatCode.DescriptionColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function GetdsMaterialRows() As dsMaterialRow()
+            If (Me.Table.ChildRelations("dtMatCode_dsMaterial") Is Nothing) Then
+                Return New dsMaterialRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("dtMatCode_dsMaterial")),dsMaterialRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -9528,6 +9563,15 @@ Namespace dsGroheTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._dtHSCodeTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._dsContainerTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.dsContainer.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -9537,12 +9581,12 @@ Namespace dsGroheTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._dtHSCodeTableAdapter.Update(updatedRows))
+                    result = (result + Me._dtMatCodeTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -9561,15 +9605,6 @@ Namespace dsGroheTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._dsPhytoTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._dtMatCodeTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -9600,6 +9635,14 @@ Namespace dsGroheTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._dtHSCodeTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._dsContainerTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.dsContainer.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -9608,11 +9651,11 @@ Namespace dsGroheTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._dtHSCodeTableAdapter.Update(addedRows))
+                    result = (result + Me._dtMatCodeTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -9629,14 +9672,6 @@ Namespace dsGroheTableAdapters
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._dsPhytoTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._dtMatCodeTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -9666,14 +9701,6 @@ Namespace dsGroheTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._dtMatCodeTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._dsPhytoTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.dsPhyto.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -9690,11 +9717,11 @@ Namespace dsGroheTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._dtMatCodeTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.dtMatCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._dtHSCodeTableAdapter.Update(deletedRows))
+                    result = (result + Me._dtMatCodeTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -9703,6 +9730,14 @@ Namespace dsGroheTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._dsContainerTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._dtHSCodeTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.dtHSCode.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._dtHSCodeTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
