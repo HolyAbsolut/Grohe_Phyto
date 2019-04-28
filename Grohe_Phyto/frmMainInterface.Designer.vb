@@ -38,6 +38,8 @@ Partial Class frmMainInterface
         Dim ShipperLabel As System.Windows.Forms.Label
         Dim ConsigneeLabel As System.Windows.Forms.Label
         Dim WeightLabel As System.Windows.Forms.Label
+        Dim OriginLabel1 As System.Windows.Forms.Label
+        Dim HS_CodeLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainInterface))
         Me.DsGrohe = New Grohe_Phyto.dsGrohe()
         Me.DsShipmentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -50,6 +52,7 @@ Partial Class frmMainInterface
         Me.DtMatCodeTableAdapter = New Grohe_Phyto.dsGroheTableAdapters.dtMatCodeTableAdapter()
         Me.tabControl = New System.Windows.Forms.TabControl()
         Me.tabOverview = New System.Windows.Forms.TabPage()
+        Me.txtSearch = New Grohe_Phyto.Watermark()
         Me.cmbFilter = New System.Windows.Forms.ComboBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.dgvMain = New System.Windows.Forms.DataGridView()
@@ -101,33 +104,48 @@ Partial Class frmMainInterface
         Me.ReqModel99CheckBox = New System.Windows.Forms.CheckBox()
         Me.btnShipmentsSave = New System.Windows.Forms.Button()
         Me.tabImport = New System.Windows.Forms.TabPage()
+        Me.txtSheetTango = New Grohe_Phyto.Watermark()
+        Me.txtSheetHsCodes = New Grohe_Phyto.Watermark()
         Me.ProgressBar = New System.Windows.Forms.ProgressBar()
         Me.chkDelete = New System.Windows.Forms.CheckBox()
         Me.txtGroheInfo = New System.Windows.Forms.TextBox()
         Me.txtHSCodes = New System.Windows.Forms.TextBox()
         Me.txtTango = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnPhytoCheck = New System.Windows.Forms.Button()
         Me.btnTango = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnHSCodes = New System.Windows.Forms.Button()
         Me.btnGrohexls = New System.Windows.Forms.Button()
         Me.btnImportxls = New System.Windows.Forms.Button()
+        Me.txtSheetMaterial = New Grohe_Phyto.Watermark()
         Me.tabSetting = New System.Windows.Forms.TabPage()
         Me.btnSignaturePath = New System.Windows.Forms.Button()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.txtSignature = New Grohe_Phyto.Watermark()
+        Me.tabHSCodes = New System.Windows.Forms.TabPage()
+        Me.ChklatestDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.DsPhytoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsPhytoDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnPreviousHSCODE = New System.Windows.Forms.Button()
+        Me.btnNextHSCODE = New System.Windows.Forms.Button()
+        Me.btnHSCodeSave = New System.Windows.Forms.Button()
+        Me.HS_CodeTextBox = New System.Windows.Forms.TextBox()
+        Me.OriginTextBox1 = New System.Windows.Forms.TextBox()
+        Me.ReqModel99CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.ReqPhytoDECheckBox1 = New System.Windows.Forms.CheckBox()
         Me.DtMatCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DtHSCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsPhytoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsMaterialBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsContainerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TotalTableAdapter = New Grohe_Phyto.dsGroheTableAdapters.TotalTableAdapter()
         Me.dlgFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.txtSearch = New Grohe_Phyto.Watermark()
-        Me.txtSheetMaterial = New Grohe_Phyto.Watermark()
-        Me.txtSignature = New Grohe_Phyto.Watermark()
-        Me.txtSheetHsCodes = New Grohe_Phyto.Watermark()
-        Me.txtSheetTango = New Grohe_Phyto.Watermark()
         STT_NOLabel = New System.Windows.Forms.Label()
         Archive_NoLabel = New System.Windows.Forms.Label()
         HBLLabel = New System.Windows.Forms.Label()
@@ -143,6 +161,8 @@ Partial Class frmMainInterface
         ShipperLabel = New System.Windows.Forms.Label()
         ConsigneeLabel = New System.Windows.Forms.Label()
         WeightLabel = New System.Windows.Forms.Label()
+        OriginLabel1 = New System.Windows.Forms.Label()
+        HS_CodeLabel = New System.Windows.Forms.Label()
         CType(Me.DsGrohe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsShipmentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabControl.SuspendLayout()
@@ -154,9 +174,11 @@ Partial Class frmMainInterface
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabImport.SuspendLayout()
         Me.tabSetting.SuspendLayout()
+        Me.tabHSCodes.SuspendLayout()
+        CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContainerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -296,6 +318,24 @@ Partial Class frmMainInterface
         WeightLabel.TabIndex = 30
         WeightLabel.Text = "Weight:"
         '
+        'OriginLabel1
+        '
+        OriginLabel1.AutoSize = True
+        OriginLabel1.Location = New System.Drawing.Point(6, 36)
+        OriginLabel1.Name = "OriginLabel1"
+        OriginLabel1.Size = New System.Drawing.Size(37, 13)
+        OriginLabel1.TabIndex = 6
+        OriginLabel1.Text = "Origin:"
+        '
+        'HS_CodeLabel
+        '
+        HS_CodeLabel.AutoSize = True
+        HS_CodeLabel.Location = New System.Drawing.Point(6, 10)
+        HS_CodeLabel.Name = "HS_CodeLabel"
+        HS_CodeLabel.Size = New System.Drawing.Size(53, 13)
+        HS_CodeLabel.TabIndex = 4
+        HS_CodeLabel.Text = "HS Code:"
+        '
         'DsGrohe
         '
         Me.DsGrohe.DataSetName = "dsGrohe"
@@ -350,11 +390,12 @@ Partial Class frmMainInterface
         Me.tabControl.Controls.Add(Me.tabOverview)
         Me.tabControl.Controls.Add(Me.tabShipment)
         Me.tabControl.Controls.Add(Me.tabImport)
+        Me.tabControl.Controls.Add(Me.tabHSCodes)
         Me.tabControl.Controls.Add(Me.tabSetting)
         Me.tabControl.Location = New System.Drawing.Point(12, 12)
         Me.tabControl.Name = "tabControl"
         Me.tabControl.SelectedIndex = 0
-        Me.tabControl.Size = New System.Drawing.Size(947, 399)
+        Me.tabControl.Size = New System.Drawing.Size(955, 399)
         Me.tabControl.TabIndex = 3
         Me.tabControl.TabStop = False
         '
@@ -367,17 +408,26 @@ Partial Class frmMainInterface
         Me.tabOverview.Location = New System.Drawing.Point(4, 22)
         Me.tabOverview.Name = "tabOverview"
         Me.tabOverview.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabOverview.Size = New System.Drawing.Size(939, 373)
+        Me.tabOverview.Size = New System.Drawing.Size(947, 373)
         Me.tabOverview.TabIndex = 0
         Me.tabOverview.Text = "Overview"
         Me.tabOverview.UseVisualStyleBackColor = True
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(7, 12)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(185, 20)
+        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSearch.WatermarkText = "Search...."
         '
         'cmbFilter
         '
         Me.cmbFilter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbFilter.FormattingEnabled = True
         Me.cmbFilter.Items.AddRange(New Object() {"Standard", "Phyto benötigt"})
-        Me.cmbFilter.Location = New System.Drawing.Point(717, 8)
+        Me.cmbFilter.Location = New System.Drawing.Point(725, 11)
         Me.cmbFilter.Name = "cmbFilter"
         Me.cmbFilter.Size = New System.Drawing.Size(216, 21)
         Me.cmbFilter.TabIndex = 2
@@ -411,7 +461,7 @@ Partial Class frmMainInterface
         Me.dgvMain.Location = New System.Drawing.Point(6, 38)
         Me.dgvMain.Name = "dgvMain"
         Me.dgvMain.ReadOnly = True
-        Me.dgvMain.Size = New System.Drawing.Size(927, 329)
+        Me.dgvMain.Size = New System.Drawing.Size(938, 329)
         Me.dgvMain.TabIndex = 0
         Me.dgvMain.TabStop = False
         '
@@ -579,17 +629,17 @@ Partial Class frmMainInterface
         Me.tabShipment.Location = New System.Drawing.Point(4, 22)
         Me.tabShipment.Name = "tabShipment"
         Me.tabShipment.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabShipment.Size = New System.Drawing.Size(939, 373)
+        Me.tabShipment.Size = New System.Drawing.Size(947, 373)
         Me.tabShipment.TabIndex = 3
         Me.tabShipment.Text = "Shipment"
         Me.tabShipment.UseVisualStyleBackColor = True
         '
         'btnWispexMail
         '
-        Me.btnWispexMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnWispexMail.Location = New System.Drawing.Point(779, 143)
+        Me.btnWispexMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnWispexMail.Location = New System.Drawing.Point(836, 149)
         Me.btnWispexMail.Name = "btnWispexMail"
-        Me.btnWispexMail.Size = New System.Drawing.Size(98, 48)
+        Me.btnWispexMail.Size = New System.Drawing.Size(57, 42)
         Me.btnWispexMail.TabIndex = 45
         Me.btnWispexMail.TabStop = False
         Me.btnWispexMail.Text = "Wispex"
@@ -609,7 +659,7 @@ Partial Class frmMainInterface
         Me.TotalDataGridView.Location = New System.Drawing.Point(6, 197)
         Me.TotalDataGridView.Name = "TotalDataGridView"
         Me.TotalDataGridView.ReadOnly = True
-        Me.TotalDataGridView.Size = New System.Drawing.Size(927, 170)
+        Me.TotalDataGridView.Size = New System.Drawing.Size(935, 173)
         Me.TotalDataGridView.TabIndex = 44
         Me.TotalDataGridView.TabStop = False
         '
@@ -834,11 +884,11 @@ Partial Class frmMainInterface
         '
         'btnShipmentsSave
         '
-        Me.btnShipmentsSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnShipmentsSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnShipmentsSave.Image = Global.Grohe_Phyto.My.Resources.Resources.save
-        Me.btnShipmentsSave.Location = New System.Drawing.Point(883, 143)
+        Me.btnShipmentsSave.Location = New System.Drawing.Point(899, 149)
         Me.btnShipmentsSave.Name = "btnShipmentsSave"
-        Me.btnShipmentsSave.Size = New System.Drawing.Size(50, 48)
+        Me.btnShipmentsSave.Size = New System.Drawing.Size(42, 42)
         Me.btnShipmentsSave.TabIndex = 42
         Me.btnShipmentsSave.TabStop = False
         Me.btnShipmentsSave.UseVisualStyleBackColor = True
@@ -853,24 +903,41 @@ Partial Class frmMainInterface
         Me.tabImport.Controls.Add(Me.txtGroheInfo)
         Me.tabImport.Controls.Add(Me.txtHSCodes)
         Me.tabImport.Controls.Add(Me.txtTango)
-        Me.tabImport.Controls.Add(Me.Button1)
+        Me.tabImport.Controls.Add(Me.btnPhytoCheck)
         Me.tabImport.Controls.Add(Me.btnTango)
         Me.tabImport.Controls.Add(Me.Label1)
         Me.tabImport.Controls.Add(Me.btnHSCodes)
         Me.tabImport.Controls.Add(Me.btnGrohexls)
-        Me.tabImport.Controls.Add(Me.txtSheetMaterial)
         Me.tabImport.Controls.Add(Me.btnImportxls)
+        Me.tabImport.Controls.Add(Me.txtSheetMaterial)
         Me.tabImport.Location = New System.Drawing.Point(4, 22)
         Me.tabImport.Name = "tabImport"
         Me.tabImport.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabImport.Size = New System.Drawing.Size(939, 373)
+        Me.tabImport.Size = New System.Drawing.Size(947, 373)
         Me.tabImport.TabIndex = 2
         Me.tabImport.Text = "Import"
         Me.tabImport.UseVisualStyleBackColor = True
         '
+        'txtSheetTango
+        '
+        Me.txtSheetTango.Location = New System.Drawing.Point(376, 43)
+        Me.txtSheetTango.Name = "txtSheetTango"
+        Me.txtSheetTango.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetTango.TabIndex = 2
+        Me.txtSheetTango.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetTango.WatermarkText = "Sheet Name"
+        '
+        'txtSheetHsCodes
+        '
+        Me.txtSheetHsCodes.Location = New System.Drawing.Point(376, 69)
+        Me.txtSheetHsCodes.Name = "txtSheetHsCodes"
+        Me.txtSheetHsCodes.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetHsCodes.TabIndex = 4
+        Me.txtSheetHsCodes.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetHsCodes.WatermarkText = "Sheet Name"
+        '
         'ProgressBar
         '
-        Me.ProgressBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar.Location = New System.Drawing.Point(87, 123)
         Me.ProgressBar.Name = "ProgressBar"
         Me.ProgressBar.Size = New System.Drawing.Size(406, 43)
@@ -911,15 +978,15 @@ Partial Class frmMainInterface
         Me.txtTango.Size = New System.Drawing.Size(283, 20)
         Me.txtTango.TabIndex = 1
         '
-        'Button1
+        'btnPhytoCheck
         '
-        Me.Button1.Location = New System.Drawing.Point(418, 172)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 7
-        Me.Button1.TabStop = False
-        Me.Button1.Text = "Phyto"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPhytoCheck.Location = New System.Drawing.Point(418, 172)
+        Me.btnPhytoCheck.Name = "btnPhytoCheck"
+        Me.btnPhytoCheck.Size = New System.Drawing.Size(75, 23)
+        Me.btnPhytoCheck.TabIndex = 7
+        Me.btnPhytoCheck.TabStop = False
+        Me.btnPhytoCheck.Text = "Phyto"
+        Me.btnPhytoCheck.UseVisualStyleBackColor = True
         '
         'btnTango
         '
@@ -970,6 +1037,15 @@ Partial Class frmMainInterface
         Me.btnImportxls.TabStop = False
         Me.btnImportxls.UseVisualStyleBackColor = True
         '
+        'txtSheetMaterial
+        '
+        Me.txtSheetMaterial.Location = New System.Drawing.Point(376, 95)
+        Me.txtSheetMaterial.Name = "txtSheetMaterial"
+        Me.txtSheetMaterial.Size = New System.Drawing.Size(117, 20)
+        Me.txtSheetMaterial.TabIndex = 6
+        Me.txtSheetMaterial.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSheetMaterial.WatermarkText = "Sheet Name"
+        '
         'tabSetting
         '
         Me.tabSetting.AutoScroll = True
@@ -980,7 +1056,7 @@ Partial Class frmMainInterface
         Me.tabSetting.Location = New System.Drawing.Point(4, 22)
         Me.tabSetting.Name = "tabSetting"
         Me.tabSetting.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tabSetting.Size = New System.Drawing.Size(939, 373)
+        Me.tabSetting.Size = New System.Drawing.Size(947, 373)
         Me.tabSetting.TabIndex = 4
         Me.tabSetting.Text = "Settings"
         Me.tabSetting.UseVisualStyleBackColor = True
@@ -1014,6 +1090,186 @@ Partial Class frmMainInterface
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Icon made by Freepik from www.flaticon.com"
         '
+        'txtSignature
+        '
+        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
+        Me.txtSignature.Name = "txtSignature"
+        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
+        Me.txtSignature.TabIndex = 4
+        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSignature.WatermarkText = "Signature Path"
+        '
+        'tabHSCodes
+        '
+        Me.tabHSCodes.AutoScroll = True
+        Me.tabHSCodes.Controls.Add(Me.ChklatestDateTimePicker)
+        Me.tabHSCodes.Controls.Add(Me.DsPhytoDataGridView)
+        Me.tabHSCodes.Controls.Add(Me.btnPreviousHSCODE)
+        Me.tabHSCodes.Controls.Add(Me.btnNextHSCODE)
+        Me.tabHSCodes.Controls.Add(Me.btnHSCodeSave)
+        Me.tabHSCodes.Controls.Add(HS_CodeLabel)
+        Me.tabHSCodes.Controls.Add(Me.HS_CodeTextBox)
+        Me.tabHSCodes.Controls.Add(OriginLabel1)
+        Me.tabHSCodes.Controls.Add(Me.OriginTextBox1)
+        Me.tabHSCodes.Controls.Add(Me.ReqModel99CheckBox1)
+        Me.tabHSCodes.Controls.Add(Me.ReqPhytoDECheckBox1)
+        Me.tabHSCodes.Location = New System.Drawing.Point(4, 22)
+        Me.tabHSCodes.Name = "tabHSCodes"
+        Me.tabHSCodes.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabHSCodes.Size = New System.Drawing.Size(947, 373)
+        Me.tabHSCodes.TabIndex = 5
+        Me.tabHSCodes.Text = "HS Codes"
+        Me.tabHSCodes.UseVisualStyleBackColor = True
+        '
+        'ChklatestDateTimePicker
+        '
+        Me.ChklatestDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.DsPhytoBindingSource, "chklatest", True))
+        Me.ChklatestDateTimePicker.Enabled = False
+        Me.ChklatestDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.ChklatestDateTimePicker.Location = New System.Drawing.Point(691, 28)
+        Me.ChklatestDateTimePicker.Name = "ChklatestDateTimePicker"
+        Me.ChklatestDateTimePicker.Size = New System.Drawing.Size(91, 20)
+        Me.ChklatestDateTimePicker.TabIndex = 58
+        '
+        'DsPhytoBindingSource
+        '
+        Me.DsPhytoBindingSource.DataMember = "dsPhyto"
+        Me.DsPhytoBindingSource.DataSource = Me.DsGrohe
+        '
+        'DsPhytoDataGridView
+        '
+        Me.DsPhytoDataGridView.AllowUserToAddRows = False
+        Me.DsPhytoDataGridView.AllowUserToDeleteRows = False
+        Me.DsPhytoDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DsPhytoDataGridView.AutoGenerateColumns = False
+        Me.DsPhytoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DsPhytoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewCheckBoxColumn2, Me.DataGridViewTextBoxColumn5})
+        Me.DsPhytoDataGridView.DataSource = Me.DsPhytoBindingSource
+        Me.DsPhytoDataGridView.Location = New System.Drawing.Point(9, 58)
+        Me.DsPhytoDataGridView.Name = "DsPhytoDataGridView"
+        Me.DsPhytoDataGridView.ReadOnly = True
+        Me.DsPhytoDataGridView.Size = New System.Drawing.Size(935, 309)
+        Me.DsPhytoDataGridView.TabIndex = 45
+        Me.DsPhytoDataGridView.TabStop = False
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Phyto_ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Phyto_ID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "HS_Code"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "HS_Code"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Origin"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Origin"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "reqModel99"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "PhytoNL"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "reqPhytoDE"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "PhytoDE"
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "chklatest"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "chklatest"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'btnPreviousHSCODE
+        '
+        Me.btnPreviousHSCODE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPreviousHSCODE.Image = Global.Grohe_Phyto.My.Resources.Resources.back1
+        Me.btnPreviousHSCODE.Location = New System.Drawing.Point(803, 6)
+        Me.btnPreviousHSCODE.Name = "btnPreviousHSCODE"
+        Me.btnPreviousHSCODE.Size = New System.Drawing.Size(42, 42)
+        Me.btnPreviousHSCODE.TabIndex = 45
+        Me.btnPreviousHSCODE.TabStop = False
+        Me.btnPreviousHSCODE.UseVisualStyleBackColor = True
+        '
+        'btnNextHSCODE
+        '
+        Me.btnNextHSCODE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNextHSCODE.Image = Global.Grohe_Phyto.My.Resources.Resources._next
+        Me.btnNextHSCODE.Location = New System.Drawing.Point(899, 6)
+        Me.btnNextHSCODE.Name = "btnNextHSCODE"
+        Me.btnNextHSCODE.Size = New System.Drawing.Size(42, 42)
+        Me.btnNextHSCODE.TabIndex = 44
+        Me.btnNextHSCODE.TabStop = False
+        Me.btnNextHSCODE.UseVisualStyleBackColor = True
+        '
+        'btnHSCodeSave
+        '
+        Me.btnHSCodeSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnHSCodeSave.Image = Global.Grohe_Phyto.My.Resources.Resources.save
+        Me.btnHSCodeSave.Location = New System.Drawing.Point(851, 6)
+        Me.btnHSCodeSave.Name = "btnHSCodeSave"
+        Me.btnHSCodeSave.Size = New System.Drawing.Size(42, 42)
+        Me.btnHSCodeSave.TabIndex = 43
+        Me.btnHSCodeSave.TabStop = False
+        Me.btnHSCodeSave.UseVisualStyleBackColor = True
+        '
+        'HS_CodeTextBox
+        '
+        Me.HS_CodeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DsPhytoBindingSource, "HS_Code", True))
+        Me.HS_CodeTextBox.Enabled = False
+        Me.HS_CodeTextBox.Location = New System.Drawing.Point(85, 6)
+        Me.HS_CodeTextBox.Name = "HS_CodeTextBox"
+        Me.HS_CodeTextBox.Size = New System.Drawing.Size(200, 20)
+        Me.HS_CodeTextBox.TabIndex = 5
+        '
+        'OriginTextBox1
+        '
+        Me.OriginTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DsPhytoBindingSource, "Origin", True))
+        Me.OriginTextBox1.Enabled = False
+        Me.OriginTextBox1.Location = New System.Drawing.Point(85, 32)
+        Me.OriginTextBox1.Name = "OriginTextBox1"
+        Me.OriginTextBox1.Size = New System.Drawing.Size(29, 20)
+        Me.OriginTextBox1.TabIndex = 7
+        '
+        'ReqModel99CheckBox1
+        '
+        Me.ReqModel99CheckBox1.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsPhytoBindingSource, "reqModel99", True))
+        Me.ReqModel99CheckBox1.Location = New System.Drawing.Point(305, 4)
+        Me.ReqModel99CheckBox1.Name = "ReqModel99CheckBox1"
+        Me.ReqModel99CheckBox1.Size = New System.Drawing.Size(200, 24)
+        Me.ReqModel99CheckBox1.TabIndex = 9
+        Me.ReqModel99CheckBox1.TabStop = False
+        Me.ReqModel99CheckBox1.Text = "Phyto NL benötigt?"
+        Me.ReqModel99CheckBox1.UseVisualStyleBackColor = True
+        '
+        'ReqPhytoDECheckBox1
+        '
+        Me.ReqPhytoDECheckBox1.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.DsPhytoBindingSource, "reqPhytoDE", True))
+        Me.ReqPhytoDECheckBox1.Location = New System.Drawing.Point(305, 30)
+        Me.ReqPhytoDECheckBox1.Name = "ReqPhytoDECheckBox1"
+        Me.ReqPhytoDECheckBox1.Size = New System.Drawing.Size(200, 24)
+        Me.ReqPhytoDECheckBox1.TabIndex = 11
+        Me.ReqPhytoDECheckBox1.TabStop = False
+        Me.ReqPhytoDECheckBox1.Text = "Phyto DE benötigt?"
+        Me.ReqPhytoDECheckBox1.UseVisualStyleBackColor = True
+        '
         'DtMatCodeBindingSource
         '
         Me.DtMatCodeBindingSource.DataMember = "dtMatCode"
@@ -1023,11 +1279,6 @@ Partial Class frmMainInterface
         '
         Me.DtHSCodeBindingSource.DataMember = "dtHSCode"
         Me.DtHSCodeBindingSource.DataSource = Me.DsGrohe
-        '
-        'DsPhytoBindingSource
-        '
-        Me.DsPhytoBindingSource.DataMember = "dsPhyto"
-        Me.DsPhytoBindingSource.DataSource = Me.DsGrohe
         '
         'DsMaterialBindingSource
         '
@@ -1047,56 +1298,11 @@ Partial Class frmMainInterface
         '
         Me.dlgFileDialog.FileName = "x"
         '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(7, 12)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(185, 20)
-        Me.txtSearch.TabIndex = 0
-        Me.txtSearch.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSearch.WatermarkText = "Search...."
-        '
-        'txtSheetMaterial
-        '
-        Me.txtSheetMaterial.Location = New System.Drawing.Point(376, 95)
-        Me.txtSheetMaterial.Name = "txtSheetMaterial"
-        Me.txtSheetMaterial.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetMaterial.TabIndex = 6
-        Me.txtSheetMaterial.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSheetMaterial.WatermarkText = "Sheet Name"
-        '
-        'txtSignature
-        '
-        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
-        Me.txtSignature.Name = "txtSignature"
-        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
-        Me.txtSignature.TabIndex = 4
-        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSignature.WatermarkText = "Signature Path"
-        '
-        'txtSheetHsCodes
-        '
-        Me.txtSheetHsCodes.Location = New System.Drawing.Point(376, 69)
-        Me.txtSheetHsCodes.Name = "txtSheetHsCodes"
-        Me.txtSheetHsCodes.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetHsCodes.TabIndex = 4
-        Me.txtSheetHsCodes.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSheetHsCodes.WatermarkText = "Sheet Name"
-        '
-        'txtSheetTango
-        '
-        Me.txtSheetTango.Location = New System.Drawing.Point(376, 43)
-        Me.txtSheetTango.Name = "txtSheetTango"
-        Me.txtSheetTango.Size = New System.Drawing.Size(117, 20)
-        Me.txtSheetTango.TabIndex = 2
-        Me.txtSheetTango.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSheetTango.WatermarkText = "Sheet Name"
-        '
         'frmMainInterface
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(971, 423)
+        Me.ClientSize = New System.Drawing.Size(979, 423)
         Me.Controls.Add(Me.tabControl)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMainInterface"
@@ -1116,9 +1322,12 @@ Partial Class frmMainInterface
         Me.tabImport.PerformLayout()
         Me.tabSetting.ResumeLayout(False)
         Me.tabSetting.PerformLayout()
+        Me.tabHSCodes.ResumeLayout(False)
+        Me.tabHSCodes.PerformLayout()
+        CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsContainerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1182,7 +1391,7 @@ Partial Class frmMainInterface
     Friend WithEvents txtGroheInfo As TextBox
     Friend WithEvents txtHSCodes As TextBox
     Friend WithEvents txtTango As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnPhytoCheck As Button
     Friend WithEvents btnTango As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents btnHSCodes As Button
@@ -1207,10 +1416,26 @@ Partial Class frmMainInterface
     Friend WithEvents TotalBindingSource As BindingSource
     Friend WithEvents TotalTableAdapter As dsGroheTableAdapters.TotalTableAdapter
     Friend WithEvents dlgFileDialog As OpenFileDialog
+    Friend WithEvents txtSheetTango As Watermark
+    Friend WithEvents txtSheetHsCodes As Watermark
+    Friend WithEvents tabHSCodes As TabPage
+    Friend WithEvents DsPhytoDataGridView As DataGridView
+    Friend WithEvents btnPreviousHSCODE As Button
+    Friend WithEvents btnNextHSCODE As Button
+    Friend WithEvents btnHSCodeSave As Button
+    Friend WithEvents HS_CodeTextBox As TextBox
+    Friend WithEvents OriginTextBox1 As TextBox
+    Friend WithEvents ReqModel99CheckBox1 As CheckBox
+    Friend WithEvents ReqPhytoDECheckBox1 As CheckBox
+    Friend WithEvents ChklatestDateTimePicker As DateTimePicker
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents ContainerNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MaterialNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents HSCodeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents txtSheetTango As Watermark
-    Friend WithEvents txtSheetHsCodes As Watermark
 End Class

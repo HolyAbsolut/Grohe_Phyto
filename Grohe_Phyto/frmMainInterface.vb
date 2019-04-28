@@ -277,10 +277,11 @@ Public Class frmMainInterface
         'Import Zeile für Zeile bearbeiten
         For Each Row As DataRow In tblImport.Rows
 
-            'Prüfen ob Record bereits vorhanden
+
             If Row("Referenz").ToString() <> "" And Row("Material").ToString() <> "" Then
                 Dim ContNo As String = Row("Referenz").ToString().Substring(Row("Referenz").ToString().Length - 11, 11)
 
+                'Prüfen ob Record bereits vorhanden
                 DsMaterialBindingSource.Filter = "Container_ID = '" & getContainerID(ContNo) & "' AND Material_No = '" & Row("Material").ToString() & "'"
                 If DsMaterialBindingSource.Count = 0 And getContainerID(ContNo) <> 0 Then
 
@@ -361,25 +362,87 @@ Public Class frmMainInterface
                 Me.DsPhytoTableAdapter.Update(Me.DsGrohe.dsPhyto)
             End If
         Next
+        DsPhytoBindingSource.Filter = ""
     End Sub
 
     Sub chkPhytoRequiered()
-        DsGrohe.Total.DefaultView.RowFilter = "chkPhytoDone = False"
-        For Each Row As DataRowView In DsGrohe.Total.DefaultView
+
+        DsGrohe.dsShipments.DefaultView.RowFilter = "chkPhytoDone = False"
+        For Each Row As DataRowView In DsGrohe.dsShipments.DefaultView
             Dim editPO As dsGrohe.dsShipmentsRow
             editPO = DsGrohe.dsShipments.FindBySTT_NO(Convert.ToInt64(Row.Item("STT_NO").ToString))
-            editPO.chkPhytoDone = True
-            editPO.chkNL = chkPhytoNL(Convert.ToInt64(Row.Item("HS_Code").ToString), Row.Item("Origin").ToString)
-            editPO.chkDE = chkPhytoDE(Convert.ToInt64(Row.Item("HS_Code").ToString), Row.Item("Origin").ToString)
-            If editPO.reqNL = False And editPO.reqDE = False Then
-                editPO.chkDE = True
-                editPO.chkNL = True
+            Dim NL_REQ As Boolean = False
+            Dim DE_REQ As Boolean = False
+
+            DsGrohe.Total.DefaultView.RowFilter = "STT_No = '" & editPO.STT_NO & "'"
+            If DsGrohe.Total.DefaultView.Count = 0 Then
+                editPO.chkPhytoDone = False
+
+
+            Else
+                For Each totalRow As DataRowView In DsGrohe.Total.DefaultView
+                    If chkPhytoNL(Convert.ToInt64(totalRow.Item("HS_Code").ToString), totalRow.Item("Origin").ToString) = True Then NL_REQ = True
+                    If chkPhytoDE(Convert.ToInt64(totalRow.Item("HS_Code").ToString), totalRow.Item("Origin").ToString) = True Then DE_REQ = True
+                Next
+                editPO.chkPhytoDone = True
+                editPO.reqDE = DE_REQ
+                editPO.reqNL = NL_REQ
+
+                If editPO.reqNL = False And editPO.reqDE = False Then 'Wenn weder noch benötigt wird werden die fertig gemacht
+                    editPO.chkDE = True
+                    editPO.chkNL = True
+                End If
+
             End If
+
+
         Next
         Me.Validate()
         Me.DsShipmentsBindingSource.EndEdit()
         Me.DsShipmentsTableAdapter.Update(Me.DsGrohe.dsShipments)
         DsGrohe.dsShipments.DefaultView.RowFilter = String.Empty
+        DsGrohe.Total.DefaultView.RowFilter = String.Empty
+
+
+        'DsGrohe.Total.DefaultView.RowFilter = "chkPhytoDone = False"
+        'For Each Row As DataRowView In DsGrohe.Total.DefaultView
+        '    Dim editPO As dsGrohe.dsShipmentsRow
+        '    editPO = DsGrohe.dsShipments.FindBySTT_NO(Convert.ToInt64(Row.Item("STT_NO").ToString))
+        '    editPO.chkPhytoDone = True ' Da nur Sendungen mit Material Nr kommen kann das generell gesetzt werden
+        '    editPO.chkNL = chkPhytoNL(Convert.ToInt64(Row.Item("HS_Code").ToString), Row.Item("Origin").ToString)
+        '    editPO.chkDE = chkPhytoDE(Convert.ToInt64(Row.Item("HS_Code").ToString), Row.Item("Origin").ToString)
+        '    If editPO.reqNL = False And editPO.reqDE = False Then 'Wenn weder noch benötigt wird werden die fertig gemacht
+        '        editPO.chkDE = True
+        '        editPO.chkNL = True
+        '    End If
+        'Next
+        'Me.Validate()
+        'Me.DsShipmentsBindingSource.EndEdit()
+        'Me.DsShipmentsTableAdapter.Update(Me.DsGrohe.dsShipments)
+        'DsGrohe.dsShipments.DefaultView.RowFilter = String.Empty
+    End Sub
+
+    Sub chkMailWispex()
+        If ChkModel99DoneCheckBox.Checked = False And ReqModel99CheckBox.Checked = True Then
+            btnWispexMail.Enabled = True
+        Else
+            btnWispexMail.Enabled = False
+        End If
+    End Sub
+
+    Private Sub STT_NOTextBox_TextChanged(sender As Object, e As EventArgs) Handles STT_NOTextBox.TextChanged
+        Dim noSTT As Int64
+        If Int64.TryParse(STT_NOTextBox.Text, noSTT) Then
+            TotalBindingSource.Filter = "STT_No ='" & noSTT & "'"
+        Else
+
+
+        End If
+
+    End Sub
+
+    Private Sub RequiredCheck_CheckedChanged(sender As Object, e As EventArgs) Handles ReqModel99CheckBox.CheckedChanged, ChkModel99DoneCheckBox.CheckedChanged
+        chkMailWispex()
     End Sub
 
     'Function
@@ -461,6 +524,7 @@ Public Class frmMainInterface
         End If
 
     End Function
+
 
     'Drag & Dropp https://www.codeproject.com/Articles/7140/Drag-and-Drop-Attached-File-From-Outlook-and-ab
     Private Sub frmMaininterface_DragDrop(sender As Object, e As System.Windows.Forms.DragEventArgs) Handles btnTango.DragDrop, btnHSCodes.DragDrop, btnHSCodes.DragDrop, txtTango.DragDrop, txtHSCodes.DragDrop, txtGroheInfo.DragDrop
@@ -557,17 +621,20 @@ Public Class frmMainInterface
         End If
     End Sub
 
+
     'Buttons
     Private Sub btnTango_Click(sender As Object, e As EventArgs) Handles btnTango.Click
         If txtTango.Text <> "" And txtSheetTango.Text <> "" Then
             ImportShipments(txtTango.Text, txtSheetTango.Text)
         End If
+        LoadDb()
     End Sub
 
     Private Sub btnHSCodes_Click(sender As Object, e As EventArgs) Handles btnHSCodes.Click
         If txtHSCodes.Text <> "" And txtSheetHsCodes.Text <> "" Then
             ImportMATCodes(txtHSCodes.Text, txtSheetHsCodes.Text)
         End If
+        LoadDb()
     End Sub
 
     Private Sub btnGrohexls_Click(sender As Object, e As EventArgs) Handles btnGrohexls.Click
@@ -575,6 +642,7 @@ Public Class frmMainInterface
             If txtSheetMaterial.Text <> "" Then ImportMaterial(txtGroheInfo.Text, txtSheetMaterial.Text)
             'If txtSheetMaterial.Text <> "" Then ImportMaterliaNo(txtGroheInfo.Text, txtSheetMaterial.Text)
         End If
+        LoadDb()
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -610,7 +678,7 @@ Public Class frmMainInterface
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub PhythoCheck_Click(sender As Object, e As EventArgs) Handles btnPhytoCheck.Click
         pop_dsPhyto()
     End Sub
 
@@ -629,20 +697,12 @@ Public Class frmMainInterface
             Case "Standard"
                 DsShipmentsBindingSource.RemoveFilter()
             Case "Phyto benötigt"
-                DsShipmentsBindingSource.Filter = "reqNL = True AND chkNL = False or reqDE= True AND chkDE = False"
+                'MsgBox("Ok")
+                DsShipmentsBindingSource.Filter = "chkNL = False AND reqNL = True AND chkPhytoDone = True OR chkDE = False AND reqDE = True AND chkPhytoDone = True"
+                'DsShipmentsBindingSource.Filter = "reqNL = True AND chkPhytoDone = True or reqDE= True AND chkPhytoDone = True"
             Case Else
                 DsShipmentsBindingSource.RemoveFilter()
         End Select
-    End Sub
-
-
-    'Accept Buttons
-    Private Sub txtSearch_Enter(sender As Object, e As EventArgs) Handles txtSearch.Enter
-        Me.AcceptButton = btnSearch
-    End Sub
-
-    Private Sub tabShipment_Enter(sender As Object, e As EventArgs) Handles tabShipment.Enter
-        Me.AcceptButton = btnShipmentsSave
     End Sub
 
     Private Sub btnImportxls_Click(sender As Object, e As EventArgs) Handles btnImportxls.Click
@@ -665,39 +725,6 @@ Public Class frmMainInterface
         MsgBox("Loading completed")
 
     End Sub
-
-
-    'Link Click
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        Process.Start("https://www.flaticon.com/free-icon/ecology_1638174")
-    End Sub
-
-    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        Process.Start("https://www.flaticon.com/free-icon/save_148730")
-    End Sub
-
-    Private Sub chkDelete_CheckedChanged(sender As Object, e As EventArgs) Handles chkDelete.CheckedChanged
-        My.Settings.DeleteFile = chkDelete.Checked
-        My.Settings.Save()
-    End Sub
-
-
-    Private Sub txtSignature_Leave(sender As Object, e As EventArgs) Handles txtSignature.Leave
-        My.Settings.sttSignature = txtSignature.Text
-        My.Settings.Save()
-    End Sub
-
-    Private Sub btnSignaturePath_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
-        dlgFileDialog.Title = "Bitte Signatur auswählen"
-        dlgFileDialog.Filter = "Html Files|*.htm"
-        dlgFileDialog.InitialDirectory = GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Microsoft\Signatures\"
-        dlgFileDialog.ShowDialog() 'Fileauswählen
-        txtSignature.Text = dlgFileDialog.FileName
-        My.Settings.sttSignature = txtSignature.Text
-        My.Settings.Save()
-    End Sub
-
-
 
     Private Sub btnWispexMail_Click(sender As Object, e As EventArgs) Handles btnWispexMail.Click
         Dim Subject As String
@@ -738,27 +765,81 @@ Public Class frmMainInterface
         Me.DsShipmentsTableAdapter.Update(Me.DsGrohe.dsShipments)
     End Sub
 
-    Sub chkMailWispex()
-        If ChkModel99DoneCheckBox.Checked = False And ReqModel99CheckBox.Checked = True Then
-            btnWispexMail.Enabled = True
-        Else
-            btnWispexMail.Enabled = False
-        End If
+    Private Sub BtnNextHSCODE_Click(sender As Object, e As EventArgs) Handles btnNextHSCODE.Click
+        Me.DsPhytoBindingSource.MoveNext()
+        My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
     End Sub
 
-    Private Sub ReqModel99CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ReqModel99CheckBox.CheckedChanged
-        chkMailWispex()
+    Private Sub BtnPreviousHSCODE_Click(sender As Object, e As EventArgs) Handles btnPreviousHSCODE.Click
+        Me.DsPhytoBindingSource.MovePrevious()
+        My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
     End Sub
 
-    Private Sub ChkModel99DoneCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ChkModel99DoneCheckBox.CheckedChanged
-        chkMailWispex()
+    Private Sub BtnHSCodeSave_Click(sender As Object, e As EventArgs) Handles btnHSCodeSave.Click
+        ChklatestDateTimePicker.Value = Date.Now
+
+        Me.Validate()
+        Me.DsPhytoBindingSource.EndEdit()
+        Me.DsPhytoTableAdapter.Update(Me.DsGrohe.dsPhyto)
+        Me.DsPhytoBindingSource.MoveNext()
+        My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
+    End Sub
+
+    Private Sub HS_CodeTextBox_Click(sender As Object, e As EventArgs) Handles HS_CodeTextBox.Click
+        My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
     End Sub
 
 
-    Private Sub txtSheetTango_Leave(sender As Object, e As EventArgs) Handles txtSheetMaterial.Leave
+    'Accept Buttons
+    Private Sub txtSearch_Enter(sender As Object, e As EventArgs) Handles txtSearch.Enter
+        Me.AcceptButton = btnSearch
+    End Sub
+
+    Private Sub tabShipment_Enter(sender As Object, e As EventArgs) Handles tabShipment.Enter
+        Me.AcceptButton = btnShipmentsSave
+    End Sub
+
+    Private Sub tabHSCodes_Enter(sender As Object, e As EventArgs) Handles tabHSCodes.Enter
+        'My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
+        Me.AcceptButton = btnHSCodeSave
+    End Sub
+
+
+    'Link Click
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("https://www.flaticon.com/free-icon/ecology_1638174")
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        Process.Start("https://www.flaticon.com/free-icon/save_148730")
+    End Sub
+
+
+    'Settings
+    Private Sub chkDelete_CheckedChanged(sender As Object, e As EventArgs) Handles chkDelete.CheckedChanged
+        My.Settings.DeleteFile = chkDelete.Checked
+        My.Settings.Save()
+    End Sub
+
+    Private Sub txtSignature_Leave(sender As Object, e As EventArgs) Handles txtSignature.Leave
+        My.Settings.sttSignature = txtSignature.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub btnSignaturePath_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
+        dlgFileDialog.Title = "Bitte Signatur auswählen"
+        dlgFileDialog.Filter = "Html Files|*.htm"
+        dlgFileDialog.InitialDirectory = GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Microsoft\Signatures\"
+        dlgFileDialog.ShowDialog() 'Fileauswählen
+        txtSignature.Text = dlgFileDialog.FileName
+        My.Settings.sttSignature = txtSignature.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub txtSheetTango_Leave(sender As Object, e As EventArgs) Handles txtSheetMaterial.Leave, txtSheetHsCodes.Leave, txtSheetTango.Leave
         My.Settings.shtTango = txtSheetTango.Text
         My.Settings.shtHSCode = txtSheetHsCodes.Text
         My.Settings.shtGrohe = txtSheetMaterial.Text
-
     End Sub
+
 End Class
