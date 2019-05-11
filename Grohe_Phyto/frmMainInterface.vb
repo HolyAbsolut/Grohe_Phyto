@@ -110,7 +110,9 @@ Public Class frmMainInterface
                 newRow.ETA = Convert.ToDateTime(Row("ETA (Date)").ToString())
                 newRow.Pieces = Convert.ToInt32(Row("No. of Pieces").ToString())
                 newRow.Weight = Convert.ToDouble(Row("Gross Weight (weight)").ToString())
-                newRow.Volume = Convert.ToDouble(Row("Volume (volume)").ToString())
+                Dim conVolume As Double = 0
+                Double.TryParse(Row("Volume (volume)").ToString(), conVolume)
+                newRow.Volume = conVolume
                 newRow.Principal = Row("Principal Name").ToString()
                 newRow.Shipper = Row("Shipper Name").ToString()
                 newRow.Consignee = Row("Consignee Name").ToString()
@@ -127,59 +129,59 @@ Public Class frmMainInterface
 
 
 
-                'Container Nr Hinzufügen
-                Dim ContArray As String() = Row("Container No.").ToString().Split(New Char() {","c})
-                For Each Cont In ContArray
-                    'Prüfen ob Record bereits vorhanden
-                    DsContainerBindingSource.Filter = "Container_No = '" & Cont.Trim & "'"
-                    If DsContainerBindingSource.Count = 0 Then
-                        Dim dsNewCont As dsGrohe.dsContainerRow
-                        dsNewCont = DsGrohe.dsContainer.NewdsContainerRow
-                        dsNewCont.Container_No = Cont.Trim
-                        dsNewCont.Created = Date.Now
-                        dsNewCont.STT_No = Convert.ToInt64(Row("STT No.").ToString())
-                        DsGrohe.dsContainer.Rows.Add(dsNewCont)
-                    Else 'Update
-                        'Dim editPO As dsGrohe.dsContainerRow
-                        'editPO = DsGrohe.dsContainer.FindByContainer_ID(getContainerID(Cont.Trim))
-                        'If editPO.IsSTT_NoNull Then
-                        '    'ToDO wir haben hier eine Paralitäzverletzung
-                        '    editPO.STT_No = Convert.ToInt64(Row("STT No.").ToString())
-                        'End If
+                    'Container Nr Hinzufügen
+                    Dim ContArray As String() = Row("Container No.").ToString().Split(New Char() {","c})
+                    For Each Cont In ContArray
+                        'Prüfen ob Record bereits vorhanden
+                        DsContainerBindingSource.Filter = "Container_No = '" & Cont.Trim & "'"
+                        If DsContainerBindingSource.Count = 0 Then
+                            Dim dsNewCont As dsGrohe.dsContainerRow
+                            dsNewCont = DsGrohe.dsContainer.NewdsContainerRow
+                            dsNewCont.Container_No = Cont.Trim
+                            dsNewCont.Created = Date.Now
+                            dsNewCont.STT_No = Convert.ToInt64(Row("STT No.").ToString())
+                            DsGrohe.dsContainer.Rows.Add(dsNewCont)
+                        Else 'Update
+                            'Dim editPO As dsGrohe.dsContainerRow
+                            'editPO = DsGrohe.dsContainer.FindByContainer_ID(getContainerID(Cont.Trim))
+                            'If editPO.IsSTT_NoNull Then
+                            '    'ToDO wir haben hier eine Paralitäzverletzung
+                            '    editPO.STT_No = Convert.ToInt64(Row("STT No.").ToString())
+                            'End If
 
-                    End If
-                Next
-
-
+                        End If
+                    Next
 
 
 
-            Else
-
-                'If Row("Purchase Order").ToString().Length <= 14 Then
-                '    Dim chkLatestETD As Date
-                '    Select Case Row("Latest ETD").ToString().Length
-                '        Case 8
-                '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "yyyyMMdd", Globalization.CultureInfo.InvariantCulture)
-                '        Case 10
-                '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "dd.MM.yyyy", Globalization.CultureInfo.InvariantCulture)
-                '        Case Else
-                '            chkLatestETD = Date.Today
-                '            MsgBox("Bitte Latest ETD für " & Row("Latest ETD").ToString() & " prüfen")
-                '    End Select
 
 
-                '    Dim editPO As HellwegDataSet.dsPurchaseOrderRow
-                '    editPO = HellwegDataSet.dsPurchaseOrder.FindByPONo(Row("Purchase Order").ToString())
-                '    If editPO.LatestETD <> chkLatestETD Then
-                '        'Update
-                '        editPO.EditDate = Date.Now
-                '        editPO.Comment = "Last Latested ETD was: " & editPO.LatestETD.ToShortDateString
-                '        editPO.LatestETD = chkLatestETD
-                '        MsgBox("Latest ETD hat sich geändert. Bitte prüfen!")
-                '    End If
-                'End If
-            End If
+                Else
+
+                    'If Row("Purchase Order").ToString().Length <= 14 Then
+                    '    Dim chkLatestETD As Date
+                    '    Select Case Row("Latest ETD").ToString().Length
+                    '        Case 8
+                    '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "yyyyMMdd", Globalization.CultureInfo.InvariantCulture)
+                    '        Case 10
+                    '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "dd.MM.yyyy", Globalization.CultureInfo.InvariantCulture)
+                    '        Case Else
+                    '            chkLatestETD = Date.Today
+                    '            MsgBox("Bitte Latest ETD für " & Row("Latest ETD").ToString() & " prüfen")
+                    '    End Select
+
+
+                    '    Dim editPO As HellwegDataSet.dsPurchaseOrderRow
+                    '    editPO = HellwegDataSet.dsPurchaseOrder.FindByPONo(Row("Purchase Order").ToString())
+                    '    If editPO.LatestETD <> chkLatestETD Then
+                    '        'Update
+                    '        editPO.EditDate = Date.Now
+                    '        editPO.Comment = "Last Latested ETD was: " & editPO.LatestETD.ToShortDateString
+                    '        editPO.LatestETD = chkLatestETD
+                    '        MsgBox("Latest ETD hat sich geändert. Bitte prüfen!")
+                    '    End If
+                    'End If
+                End If
 
             countRecord += 1
             ProgressBar.Value = countRecord
@@ -214,41 +216,24 @@ Public Class frmMainInterface
             'Prüfen ob Record bereits vorhanden
             DtMatCodeBindingSource.Filter = "Material_ID = '" & Row("Produktnummer").ToString() & "'"
             If DtMatCodeBindingSource.Count = 0 Then
-                'MsgBox(Row("Produktnummer").ToString())
                 'Neu Anlegen
-                Dim newRow As dsGrohe.dtMatCodeRow
-                newRow = DsGrohe.dtMatCode.NewdtMatCodeRow
-                newRow.Material_ID = Row("Produktnummer").ToString()
-                newRow.Created = Date.Now
-                newRow.Description = Row("Zollrechtl. Warenbeschreibung").ToString()
-                chkHSCode(Convert.ToInt64(Row("Nummer").ToString()))
-                newRow.HS_Code = Convert.ToInt64(Row("Nummer").ToString())
-                DsGrohe.dtMatCode.Rows.Add(newRow)
+                If Row("Produktnummer").ToString() <> "" Then
+                    Dim newRow As dsGrohe.dtMatCodeRow
+                    newRow = DsGrohe.dtMatCode.NewdtMatCodeRow
+                    newRow.Material_ID = Row("Produktnummer").ToString()
+                    newRow.Created = Date.Now
+                    newRow.Description = Row("Zollrechtl. Warenbeschreibung").ToString()
+                    chkHSCode(Convert.ToInt64(Row("Nummer").ToString()))
+                    newRow.HS_Code = Convert.ToInt64(Row("Nummer").ToString())
+                    DsGrohe.dtMatCode.Rows.Add(newRow)
+                End If
             Else
+                Dim editPO As dsGrohe.dtMatCodeRow
+                editPO = DsGrohe.dtMatCode.FindByMaterial_ID(Row("Produktnummer").ToString())
+                chkHSCode(Convert.ToInt64(Row("Nummer").ToString()))
+                If editPO.HS_Code <> Convert.ToInt64(Row("Nummer").ToString()) Then editPO.HS_Code = Convert.ToInt64(Row("Nummer").ToString())
+                If editPO.Description <> Row("Zollrechtl. Warenbeschreibung").ToString() Then editPO.Description = Row("Zollrechtl. Warenbeschreibung").ToString()
 
-                'If Row("Purchase Order").ToString().Length <= 14 Then
-                '    Dim chkLatestETD As Date
-                '    Select Case Row("Latest ETD").ToString().Length
-                '        Case 8
-                '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "yyyyMMdd", Globalization.CultureInfo.InvariantCulture)
-                '        Case 10
-                '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "dd.MM.yyyy", Globalization.CultureInfo.InvariantCulture)
-                '        Case Else
-                '            chkLatestETD = Date.Today
-                '            MsgBox("Bitte Latest ETD für " & Row("Latest ETD").ToString() & " prüfen")
-                '    End Select
-
-
-                '    Dim editPO As HellwegDataSet.dsPurchaseOrderRow
-                '    editPO = HellwegDataSet.dsPurchaseOrder.FindByPONo(Row("Purchase Order").ToString())
-                '    If editPO.LatestETD <> chkLatestETD Then
-                '        'Update
-                '        editPO.EditDate = Date.Now
-                '        editPO.Comment = "Last Latested ETD was: " & editPO.LatestETD.ToShortDateString
-                '        editPO.LatestETD = chkLatestETD
-                '        MsgBox("Latest ETD hat sich geändert. Bitte prüfen!")
-                '    End If
-                'End If
             End If
             countRecord += 1
             ProgressBar.Value = countRecord
@@ -292,39 +277,51 @@ Public Class frmMainInterface
                     newRow.Material_No = Row("Material").ToString()
                     newRow.Created = Date.Now
                     DsGrohe.dsMaterial.Rows.Add(newRow)
+
+                    If chkPhytoDoneAlready(ContNo) = True Then
+                        MsgBox("1")
+                        Dim editPO As dsGrohe.dsShipmentsRow
+                        editPO = DsGrohe.dsShipments.FindBySTT_NO(getSTT(ContNo))
+                        editPO.chkPhytoDone = False
+                        MsgBox("2")
+                    End If
+
                 Else
 
-                    'If Row("Purchase Order").ToString().Length <= 14 Then
-                    '    Dim chkLatestETD As Date
-                    '    Select Case Row("Latest ETD").ToString().Length
-                    '        Case 8
-                    '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "yyyyMMdd", Globalization.CultureInfo.InvariantCulture)
-                    '        Case 10
-                    '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "dd.MM.yyyy", Globalization.CultureInfo.InvariantCulture)
-                    '        Case Else
-                    '            chkLatestETD = Date.Today
-                    '            MsgBox("Bitte Latest ETD für " & Row("Latest ETD").ToString() & " prüfen")
-                    '    End Select
+                        'If Row("Purchase Order").ToString().Length <= 14 Then
+                        '    Dim chkLatestETD As Date
+                        '    Select Case Row("Latest ETD").ToString().Length
+                        '        Case 8
+                        '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "yyyyMMdd", Globalization.CultureInfo.InvariantCulture)
+                        '        Case 10
+                        '            chkLatestETD = DateTime.ParseExact(Row("Latest ETD").ToString(), "dd.MM.yyyy", Globalization.CultureInfo.InvariantCulture)
+                        '        Case Else
+                        '            chkLatestETD = Date.Today
+                        '            MsgBox("Bitte Latest ETD für " & Row("Latest ETD").ToString() & " prüfen")
+                        '    End Select
 
 
-                    '    Dim editPO As HellwegDataSet.dsPurchaseOrderRow
-                    '    editPO = HellwegDataSet.dsPurchaseOrder.FindByPONo(Row("Purchase Order").ToString())
-                    '    If editPO.LatestETD <> chkLatestETD Then
-                    '        'Update
-                    '        editPO.EditDate = Date.Now
-                    '        editPO.Comment = "Last Latested ETD was: " & editPO.LatestETD.ToShortDateString
-                    '        editPO.LatestETD = chkLatestETD
-                    '        MsgBox("Latest ETD hat sich geändert. Bitte prüfen!")
-                    '    End If
-                    'End If
-                End If
+                        '    Dim editPO As HellwegDataSet.dsPurchaseOrderRow
+                        '    editPO = HellwegDataSet.dsPurchaseOrder.FindByPONo(Row("Purchase Order").ToString())
+                        '    If editPO.LatestETD <> chkLatestETD Then
+                        '        'Update
+                        '        editPO.EditDate = Date.Now
+                        '        editPO.Comment = "Last Latested ETD was: " & editPO.LatestETD.ToShortDateString
+                        '        editPO.LatestETD = chkLatestETD
+                        '        MsgBox("Latest ETD hat sich geändert. Bitte prüfen!")
+                        '    End If
+                        'End If
+                    End If
             End If
             countRecord += 1
             ProgressBar.Value = countRecord
         Next
         Me.Validate()
         Me.DsMaterialBindingSource.EndEdit()
+        Me.DsShipmentsBindingSource.EndEdit()
         Me.DsMaterialTableAdapter.Update(Me.DsGrohe.dsMaterial)
+        Me.DsShipmentsTableAdapter.Update(Me.DsGrohe.dsShipments)
+
         'Hellweg_BookingDataSet.AcceptChanges()
         If chkDelete.Checked = True Then My.Computer.FileSystem.DeleteFile(xlsFile)
         MsgBox("Update successful")
@@ -445,6 +442,12 @@ Public Class frmMainInterface
         chkMailWispex()
     End Sub
 
+    Sub ErrorLog(ByVal errMessage As String)
+        Dim strFile As String = Application.StartupPath() & "\ErrorLog.txt"
+        My.Computer.FileSystem.WriteAllText(strFile, Environment.NewLine & DateTime.Now & " ; " & errMessage, True)
+        PictureBox1.Visible = Enabled
+    End Sub
+
     'Function
     Function xls_To_Datatable(ByVal dirExcel As String, ByVal xlsTable As String) As DataTable
         'Open the Excel file using ClosedXML.
@@ -506,7 +509,8 @@ Public Class frmMainInterface
                 Return Convert.ToBoolean(Row.Item("reqPhytoDE").ToString)
             Next
         Else
-            MsgBox("ZolltarifNr DE nicht gefunden")
+            ErrorLog(HS_Code & " ex " & Origin & " ZolltarifNr DE nicht gefunden")
+            'MsgBox("ZolltarifNr DE nicht gefunden")
             Return True
         End If
 
@@ -519,10 +523,35 @@ Public Class frmMainInterface
                 Return Convert.ToBoolean(Row.Item("reqModel99").ToString)
             Next
         Else
-            MsgBox("ZolltarifNr NL nicht gefunden")
+            ErrorLog(HS_Code & " ex " & Origin & " ZolltarifNr NL nicht gefunden")
+
             Return True
         End If
 
+    End Function
+
+    Function chkPhytoDoneAlready(ByVal Container_No As String) As Boolean ' Prüfen ob eventl schon der Phyto check gemacht wurde wenn neue Mats ergänzt werden
+        DsShipmentsBindingSource.Filter = "STT_No = '" & getSTT(Container_No) & "'"
+        If DsShipmentsBindingSource.Count = 1 Then
+            Dim unRow As DataRow = DsGrohe.dsShipments.Rows(DsGrohe.dsShipments.Rows.IndexOf(DirectCast(DsShipmentsBindingSource.Current, DataRowView).Row))
+            chkPhytoDoneAlready = Convert.ToBoolean(unRow.Item("chkPhytoDone"))
+        Else
+            Return False
+        End If
+    End Function
+
+    Function getSTT(ByVal Container_No As String) As Int64
+
+        Dim searchColumn = "Container_No"
+
+        DsContainerBindingSource.Filter = searchColumn & " = '" & Container_No & "'"
+        If DsContainerBindingSource.Count = 1 Then
+            'Dim unRow As DataRow = DsDemag_HUB.UNLOC.Rows(DsDemag_HUB.UNLOC.Rows.IndexOf(DirectCast(UNLOCBindingSource.Current, DataRowView).Row))
+            Dim unRow As DataRow = DsGrohe.dsContainer.Rows(DsGrohe.dsContainer.Rows.IndexOf(DirectCast(DsContainerBindingSource.Current, DataRowView).Row))
+            getSTT = Convert.ToInt64(unRow.Item("STT_No"))
+        Else
+            getSTT = 0
+        End If
     End Function
 
 
@@ -789,6 +818,9 @@ Public Class frmMainInterface
         My.Computer.Clipboard.SetText(HS_CodeTextBox.Text)
     End Sub
 
+    Private Sub BtnReloadDb_Click(sender As Object, e As EventArgs) Handles btnReloadDb.Click
+        LoadDb("All")
+    End Sub
 
     'Accept Buttons
     Private Sub txtSearch_Enter(sender As Object, e As EventArgs) Handles txtSearch.Enter
@@ -842,4 +874,42 @@ Public Class frmMainInterface
         My.Settings.shtGrohe = txtSheetMaterial.Text
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        ErrorLog("Test")
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+        Process.Start(Application.StartupPath() & "\ErrorLog.txt")
+        PictureBox1.Visible = False
+    End Sub
+
+    Private Sub frmMainInterface_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        Me.DsShipmentsBindingSource.EndEdit()
+        Me.DsMaterialBindingSource.EndEdit()
+        Me.DtMatCodeBindingSource.EndEdit()
+        Me.DsContainerBindingSource.EndEdit()
+        Me.DsPhytoBindingSource.EndEdit()
+
+
+
+        If DsGrohe.HasChanges Then
+            Dim result As Integer = MessageBox.Show("Save changes?", "caption", MessageBoxButtons.YesNoCancel)
+            If result = DialogResult.Cancel Then
+                e.Cancel = True
+            ElseIf result = DialogResult.No Then
+
+            ElseIf result = DialogResult.Yes Then
+                Me.DsShipmentsTableAdapter.Update(Me.DsGrohe.dsShipments)
+                Me.DsMaterialTableAdapter.Update(Me.DsGrohe.dsMaterial)
+                Me.DtMatCodeTableAdapter.Update(Me.DsGrohe.dtMatCode)
+                Me.DsContainerTableAdapter.Update(Me.DsGrohe.dsContainer)
+                Me.DsPhytoTableAdapter.Update(Me.DsGrohe.dsPhyto)
+
+            End If
+        End If
+
+    End Sub
 End Class

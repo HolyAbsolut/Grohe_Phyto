@@ -104,6 +104,8 @@ Partial Class frmMainInterface
         Me.ReqModel99CheckBox = New System.Windows.Forms.CheckBox()
         Me.btnShipmentsSave = New System.Windows.Forms.Button()
         Me.tabImport = New System.Windows.Forms.TabPage()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnReloadDb = New System.Windows.Forms.Button()
         Me.txtSheetTango = New Grohe_Phyto.Watermark()
         Me.txtSheetHsCodes = New Grohe_Phyto.Watermark()
         Me.ProgressBar = New System.Windows.Forms.ProgressBar()
@@ -118,11 +120,6 @@ Partial Class frmMainInterface
         Me.btnGrohexls = New System.Windows.Forms.Button()
         Me.btnImportxls = New System.Windows.Forms.Button()
         Me.txtSheetMaterial = New Grohe_Phyto.Watermark()
-        Me.tabSetting = New System.Windows.Forms.TabPage()
-        Me.btnSignaturePath = New System.Windows.Forms.Button()
-        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.txtSignature = New Grohe_Phyto.Watermark()
         Me.tabHSCodes = New System.Windows.Forms.TabPage()
         Me.ChklatestDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.DsPhytoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -140,6 +137,11 @@ Partial Class frmMainInterface
         Me.OriginTextBox1 = New System.Windows.Forms.TextBox()
         Me.ReqModel99CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ReqPhytoDECheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.tabSetting = New System.Windows.Forms.TabPage()
+        Me.btnSignaturePath = New System.Windows.Forms.Button()
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.txtSignature = New Grohe_Phyto.Watermark()
         Me.DtMatCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DtHSCodeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsMaterialBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -173,10 +175,11 @@ Partial Class frmMainInterface
         CType(Me.TotalBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabImport.SuspendLayout()
-        Me.tabSetting.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabHSCodes.SuspendLayout()
         CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabSetting.SuspendLayout()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -896,6 +899,8 @@ Partial Class frmMainInterface
         'tabImport
         '
         Me.tabImport.AllowDrop = True
+        Me.tabImport.Controls.Add(Me.PictureBox1)
+        Me.tabImport.Controls.Add(Me.btnReloadDb)
         Me.tabImport.Controls.Add(Me.txtSheetTango)
         Me.tabImport.Controls.Add(Me.txtSheetHsCodes)
         Me.tabImport.Controls.Add(Me.ProgressBar)
@@ -917,6 +922,26 @@ Partial Class frmMainInterface
         Me.tabImport.TabIndex = 2
         Me.tabImport.Text = "Import"
         Me.tabImport.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(499, 42)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(128, 128)
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
+        '
+        'btnReloadDb
+        '
+        Me.btnReloadDb.Location = New System.Drawing.Point(337, 172)
+        Me.btnReloadDb.Name = "btnReloadDb"
+        Me.btnReloadDb.Size = New System.Drawing.Size(75, 23)
+        Me.btnReloadDb.TabIndex = 21
+        Me.btnReloadDb.TabStop = False
+        Me.btnReloadDb.Text = "reload DB"
+        Me.btnReloadDb.UseVisualStyleBackColor = True
         '
         'txtSheetTango
         '
@@ -1045,59 +1070,6 @@ Partial Class frmMainInterface
         Me.txtSheetMaterial.TabIndex = 6
         Me.txtSheetMaterial.WatermarkColor = System.Drawing.Color.Gray
         Me.txtSheetMaterial.WatermarkText = "Sheet Name"
-        '
-        'tabSetting
-        '
-        Me.tabSetting.AutoScroll = True
-        Me.tabSetting.Controls.Add(Me.btnSignaturePath)
-        Me.tabSetting.Controls.Add(Me.LinkLabel2)
-        Me.tabSetting.Controls.Add(Me.LinkLabel1)
-        Me.tabSetting.Controls.Add(Me.txtSignature)
-        Me.tabSetting.Location = New System.Drawing.Point(4, 22)
-        Me.tabSetting.Name = "tabSetting"
-        Me.tabSetting.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tabSetting.Size = New System.Drawing.Size(947, 373)
-        Me.tabSetting.TabIndex = 4
-        Me.tabSetting.Text = "Settings"
-        Me.tabSetting.UseVisualStyleBackColor = True
-        '
-        'btnSignaturePath
-        '
-        Me.btnSignaturePath.Image = Global.Grohe_Phyto.My.Resources.Resources.folder
-        Me.btnSignaturePath.Location = New System.Drawing.Point(299, 22)
-        Me.btnSignaturePath.Name = "btnSignaturePath"
-        Me.btnSignaturePath.Size = New System.Drawing.Size(27, 20)
-        Me.btnSignaturePath.TabIndex = 5
-        Me.btnSignaturePath.UseVisualStyleBackColor = True
-        '
-        'LinkLabel2
-        '
-        Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(3, 59)
-        Me.LinkLabel2.Name = "LinkLabel2"
-        Me.LinkLabel2.Size = New System.Drawing.Size(241, 13)
-        Me.LinkLabel2.TabIndex = 3
-        Me.LinkLabel2.TabStop = True
-        Me.LinkLabel2.Text = "Icon made by Smashicons from www.flaticon.com"
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(3, 46)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(219, 13)
-        Me.LinkLabel1.TabIndex = 2
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Icon made by Freepik from www.flaticon.com"
-        '
-        'txtSignature
-        '
-        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
-        Me.txtSignature.Name = "txtSignature"
-        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
-        Me.txtSignature.TabIndex = 4
-        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
-        Me.txtSignature.WatermarkText = "Signature Path"
         '
         'tabHSCodes
         '
@@ -1270,6 +1242,59 @@ Partial Class frmMainInterface
         Me.ReqPhytoDECheckBox1.Text = "Phyto DE benötigt?"
         Me.ReqPhytoDECheckBox1.UseVisualStyleBackColor = True
         '
+        'tabSetting
+        '
+        Me.tabSetting.AutoScroll = True
+        Me.tabSetting.Controls.Add(Me.btnSignaturePath)
+        Me.tabSetting.Controls.Add(Me.LinkLabel2)
+        Me.tabSetting.Controls.Add(Me.LinkLabel1)
+        Me.tabSetting.Controls.Add(Me.txtSignature)
+        Me.tabSetting.Location = New System.Drawing.Point(4, 22)
+        Me.tabSetting.Name = "tabSetting"
+        Me.tabSetting.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.tabSetting.Size = New System.Drawing.Size(947, 373)
+        Me.tabSetting.TabIndex = 4
+        Me.tabSetting.Text = "Settings"
+        Me.tabSetting.UseVisualStyleBackColor = True
+        '
+        'btnSignaturePath
+        '
+        Me.btnSignaturePath.Image = Global.Grohe_Phyto.My.Resources.Resources.folder
+        Me.btnSignaturePath.Location = New System.Drawing.Point(299, 22)
+        Me.btnSignaturePath.Name = "btnSignaturePath"
+        Me.btnSignaturePath.Size = New System.Drawing.Size(27, 20)
+        Me.btnSignaturePath.TabIndex = 5
+        Me.btnSignaturePath.UseVisualStyleBackColor = True
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Location = New System.Drawing.Point(3, 59)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(241, 13)
+        Me.LinkLabel2.TabIndex = 3
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "Icon made by Smashicons from www.flaticon.com"
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(3, 46)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(219, 13)
+        Me.LinkLabel1.TabIndex = 2
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Icon made by Freepik from www.flaticon.com"
+        '
+        'txtSignature
+        '
+        Me.txtSignature.Location = New System.Drawing.Point(3, 23)
+        Me.txtSignature.Name = "txtSignature"
+        Me.txtSignature.Size = New System.Drawing.Size(290, 20)
+        Me.txtSignature.TabIndex = 4
+        Me.txtSignature.WatermarkColor = System.Drawing.Color.Gray
+        Me.txtSignature.WatermarkText = "Signature Path"
+        '
         'DtMatCodeBindingSource
         '
         Me.DtMatCodeBindingSource.DataMember = "dtMatCode"
@@ -1320,12 +1345,13 @@ Partial Class frmMainInterface
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabImport.ResumeLayout(False)
         Me.tabImport.PerformLayout()
-        Me.tabSetting.ResumeLayout(False)
-        Me.tabSetting.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabHSCodes.ResumeLayout(False)
         Me.tabHSCodes.PerformLayout()
         CType(Me.DsPhytoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsPhytoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabSetting.ResumeLayout(False)
+        Me.tabSetting.PerformLayout()
         CType(Me.DtMatCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DtHSCodeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsMaterialBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1438,4 +1464,6 @@ Partial Class frmMainInterface
     Friend WithEvents MaterialNoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents HSCodeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescriptionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents btnReloadDb As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
